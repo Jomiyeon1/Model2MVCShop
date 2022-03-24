@@ -12,18 +12,22 @@
 		<item key="org.eclipse.ui.internal.quickaccess.QuickAccessDialogDIALOG_USE_PERSISTED_SIZE" value="true"/>
 		<item key="org.eclipse.ui.internal.quickaccess.QuickAccessDialogDIALOG_USE_PERSISTED_LOCATION" value="false"/>
 		<list key="orderedElements">
+			<item value="/01.Model2MVCShop(stu)/src/main/java/com/model2/mvc/view/user/GetUserAction.java"/>
 			<item value="org.eclipse.ui.views.PropertySheet"/>
 			<item value="/01.Model2MVCShop(stu)/src/main/java/com/model2/mvc/service/user/dao/UserDAO.java"/>
 		</list>
 		<list key="orderedProviders">
+			<item value="org.eclipse.ui.ide/org.eclipse.ui.internal.ide.dialogs.OpenResourceQuickAccessComputer"/>
 			<item value="org.eclipse.e4.ui.parts"/>
 			<item value="org.eclipse.ui.ide/org.eclipse.ui.internal.ide.dialogs.OpenResourceQuickAccessComputer"/>
 		</list>
 		<list key="textEntries">
 			<item value="1"/>
 			<item value="1"/>
+			<item value="1"/>
 		</list>
 		<list key="textArray">
+			<item value="getu"/>
 			<item value="proper"/>
 			<item value="user"/>
 		</list>

@@ -6,3 +6,9 @@
 1648109101810	Rename type 'UserServiceImpl'
 1648113594670	Rename resource 'AddProductView.jsp'
 1648113855102	Delete elements
+1648131775773	Copy compilation unit
+1648131786225	Rename type 'AddUserAction'
+1648133914335	Copy compilation unit
+1648133928464	Rename type 'ListUserAction'
+1648134243070	Copy compilation unit
+1648134251785	Rename type 'GetUserAction'
