@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.model2.mvc.service.product.dao.ProductDAO"/>
+    <fullyQualifiedTypeName name="com.model2.mvc.service.product.ProductService"/>
+    <fullyQualifiedTypeName name="com.model2.mvc.service.product.vo.ProductVO"/>
+</qualifiedTypeNameHistroy>
