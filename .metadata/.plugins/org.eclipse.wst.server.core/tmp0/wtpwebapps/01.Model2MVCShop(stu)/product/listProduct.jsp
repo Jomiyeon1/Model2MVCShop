@@ -69,15 +69,49 @@ function fncGetProductList(){
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 	<tr>
-		
+	<%
+		if(searchVO.getSearchCondition() != null) {
+	%>
+		<td align="right">
+			<select name="searchCondition" class="ct_input_g" style="width:80px">
+		<%
+				if(searchVO.getSearchCondition().equals("0")){
+		%>
+				<option value="0">상품번호</option>
+				<option value="1">상품명</option>
+				<option value="2">상품가격</option>
+				
+		<%
+				}else {
+		%>
+				<option value="0">상품번호</option>
+				<option value="1">상품명</option>
+				<option value="2">상품가격</option>
+		<%
+				}
+		%>	
+				
+				
+			</select>
+			<input type="text" name="searchKeyword"  class="ct_input_g" style="width:200px; height:19px" />
+		</td>
+	<%
+		}else{
+	%>
 		<td align="right">
 			<select name="searchCondition" class="ct_input_g" style="width:80px">
 				<option value="0">상품번호</option>
 				<option value="1">상품명</option>
 				<option value="2">상품가격</option>
 			</select>
-			<input type="text" name="searchKeyword"  class="ct_input_g" style="width:200px; height:19px" />
-		</td>
+			<input type="text" name="searchKeyword"  class="ct_input_g" style="width:200px; height:19px" >
+		</td>		
+			
+			
+	<%		
+		}
+	%>
+	
 	
 		
 		<td align="right" width="70">
@@ -114,14 +148,15 @@ function fncGetProductList(){
 		<td class="ct_line02"></td>
 		<td class="ct_list_b">현재상태</td>	
 	</tr>
+	
+	<tr>
+		<td colspan="11" bgcolor="808285" height="1"></td>
+	</tr>
 	<% 	
 		int no=list.size();
 		for(int i=0; i<list.size(); i++) {
 			ProductVO vo = (ProductVO)list.get(i);
 	%>
-	<tr>
-		<td colspan="11" bgcolor="808285" height="1"></td>
-	</tr>
 		
 	<tr class="ct_list_pop">
 		<td align="center"><%=no--%></td>
@@ -134,10 +169,8 @@ function fncGetProductList(){
 		<td></td>
 		<td align="left"><%=vo.getManuDate() %></td>
 		<td></td>
-		<td align="left">
-		
-			판매중
-		
+		<td align="left"><%= vo.getProTranCode() %>
+		</td>
 		</td>	
 	</tr>
 <% } %>

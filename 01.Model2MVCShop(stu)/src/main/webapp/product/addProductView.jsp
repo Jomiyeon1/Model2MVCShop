@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" %>
 <html>
 <head>
 <title>상품등록</title>

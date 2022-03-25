@@ -129,17 +129,17 @@ public class ProductDAO {
 		
 		Connection con = DBUtil.getConnection();
 
-		String sql = "update PRODUCT set ProdName=?,ProdDetail=?,Price=?,FileName=? where getProdNo=?";
+		String sql = "update PRODUCT set PROD_NAME=?,PROD_DETAIL=?,PRICE=?,IMAGE_FILE=? where PROD_NO=?";
 		
 		PreparedStatement stmt = con.prepareStatement(sql);
-		stmt.setInt(1, productVO.getProdNo());
-		stmt.setString(2, productVO.getProdName());
-		stmt.setString(3, productVO.getProdDetail());
-		stmt.setString(4, productVO.getManuDate());
-		stmt.setInt(5, productVO.getPrice());
-		stmt.setString(6, productVO.getFileName());
-		stmt.setDate(7, productVO.getRegDate());
-		stmt.executeUpdate();
+		//stmt.setInt(1, productVO.getProdNo());
+		stmt.setString(1, productVO.getProdName());
+		stmt.setString(2, productVO.getProdDetail());
+		stmt.setString(3, productVO.getManuDate());
+		stmt.setInt(4, productVO.getPrice());
+		stmt.setString(5, productVO.getFileName());
+		//stmt.setDate(7, productVO.getRegDate());
+		
 		stmt.executeUpdate();
 		
 		con.close();

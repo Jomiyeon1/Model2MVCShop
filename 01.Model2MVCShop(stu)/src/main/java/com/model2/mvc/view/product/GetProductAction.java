@@ -15,9 +15,8 @@ public class GetProductAction extends Action{
 	public String execute(	HttpServletRequest request,
 												HttpServletResponse response) throws Exception {
 		
-		// 상품명으로 
-		String prod_no=request.getParameter("prodNo");
 		
+		String prod_no=request.getParameter("prodNo");
 		ProductService service=new ProductServiceImpl();
 		ProductVO vo=service.getProduct(Integer.parseInt(prod_no));
 		

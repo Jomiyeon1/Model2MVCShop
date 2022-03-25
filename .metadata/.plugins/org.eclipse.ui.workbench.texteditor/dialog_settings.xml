@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="type=&quot;file&quot; name=&quot;fileName&quot; class=&quot;ct_input_g&quot;"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="type=&quot;file&quot; name=&quot;fileName&quot; class=&quot;ct_input_g&quot;"/>
-			<item value="enctype"/>
-			<item value="addProduct"/>
-			<item value="addP"/>
-			<item value="add"/>
-			<item value="ins"/>
-			<item value="insr"/>
-			<item value="insrty"/>
-			<item value="inset"/>
-			<item value="type=&quot;file&quot;"/>
-			<item value="type=&quot;file&quot; name=&quot;fileName&quot; class=&quot;ct_input_g&quot; style=&quot;width: 200px; height: 19px&quot; maxLength=&quot;13&quot;/&gt;"/>
-			<item value="&lt;input&#x09;&#x09;type=&quot;file&quot; name=&quot;fileName&quot; class=&quot;ct_input_g&quot; style=&quot;width: 200px; height: 19px&quot; maxLength=&quot;13&quot;/&gt;"/>
-			<item value="파일선택"/>
-			<item value="class=&quot;ct_input_g&quot; style"/>
-			<item value="enctype "/>
+			<item value="manager"/>
+			<item value="userid"/>
+			<item value="id"/>
+			<item value="prodNo"/>
+			<item value="fileName"/>
+			<item value="price"/>
+			<item value="manuDate"/>
+			<item value="detail"/>
+			<item value="dedaul"/>
+			<item value="상세"/>
+			<item value="prodDetail"/>
+			<item value="date"/>
+			<item value="prod"/>
+			<item value="value"/>
+			<item value="10000"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="530"/>
-		<item key="DIALOG_Y_ORIGIN" value="217"/>
+		<item key="DIALOG_X_ORIGIN" value="541"/>
+		<item key="DIALOG_Y_ORIGIN" value="87"/>
 		<item key="DIALOG_WIDTH" value="340"/>
 		<item key="DIALOG_HEIGHT" value="454"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

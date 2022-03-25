@@ -11,7 +11,7 @@ session = request.getSession();
 
 ProductVO vo = (ProductVO)request.getAttribute("vo");
 %>
-%>
+
     
 <html>
 <head>
@@ -54,7 +54,7 @@ ProductVO vo = (ProductVO)request.getAttribute("vo");
 		<td class="ct_write01">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td width="105">상품명 부분</td>
+					<td width="105"><%=vo.getProdName() %></td>
 					<td></td>
 				</tr>
 			</table>

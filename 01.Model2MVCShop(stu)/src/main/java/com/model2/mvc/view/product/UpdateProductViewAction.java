@@ -9,18 +9,19 @@ import com.model2.mvc.service.product.impl.ProductServiceImpl;
 import com.model2.mvc.service.product.vo.ProductVO;
 
 
-public class GetProductAction extends Action{
+public class UpdateProductViewAction extends Action{
 
 	@Override
 	public String execute(	HttpServletRequest request,
 												HttpServletResponse response) throws Exception {
-		String userId=request.getParameter("userId");
+		int prod_no = Integer.parseInt(request.getParameter("prodNo"));
 		
-		UserService service=new UserServiceImpl();
-		UserVO vo=service.getUser(userId);
+		ProductService service = new ProductServiceImpl();
+		System.out.println(prod_no);
+		ProductVO productVO = service.getProduct(prod_no);
 		
-		request.setAttribute("vo", vo);
-
-		return "forward:/user/readUser.jsp";
+		request.setAttribute("productVO", productVO);
+		
+		return "forward:/product/updateProduct.jsp";
 	}
 }

@@ -51,7 +51,7 @@ function fncAddProduct(){
 
 <form name="detailForm" method="post" enctype="multipart/form-data">
 
-<input type="hidden" name="prodNo" value="10000"/>
+<input type="hidden" name="prodNo" value="<%=vo.getProdNo() %>"/>
 
 <table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 	<tr>
@@ -86,7 +86,7 @@ function fncAddProduct(){
 				<tr>
 					<td width="105">
 						<input 	type="text" name="prodName" class="ct_input_g" 
-										style="width: 100px; height: 19px" maxLength="20" value="vaio vgn FS70B">
+										style="width: 100px; height: 19px" maxLength="20" value="<%=vo.getProdName() %>">
 					</td>
 				</tr>
 			</table>
@@ -101,7 +101,7 @@ function fncAddProduct(){
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input type="text" name="prodDetail" value="소니 바이오 노트북" class="ct_input_g" 
+			<input type="text" name="prodDetail" value="<%=vo.getProdDetail() %>" class="ct_input_g" 
 						style="width: 100px; height: 19px" maxLength="10"	minLength="6">
 		</td>
 	</tr>
@@ -114,7 +114,7 @@ function fncAddProduct(){
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input type="text" readonly="readonly" name="manuDate" value="20120514" 	
+			<input type="text" readonly="readonly" name="manuDate" value="<%=vo.getManuDate() %>" 	
 						class="ct_input_g" style="width: 100px; height: 19px" maxLength="10" minLength="6">&nbsp;
 						<img 	src="../images/ct_icon_date.gif" width="15" height="15" 
 									onclick="show_calendar('document.detailForm.manuDate', document.detailForm.manuDate.value)" />
@@ -129,7 +129,7 @@ function fncAddProduct(){
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input type="text" name="price" value="2000000"
+			<input type="text" name="price" value="<%=vo.getPrice() %>"
 						class="ct_input_g" style="width: 100px; height: 19px" maxLength="50"/>&nbsp;원
 		</td>
 	</tr>
