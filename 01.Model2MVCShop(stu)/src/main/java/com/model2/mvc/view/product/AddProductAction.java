@@ -17,12 +17,11 @@ public class AddProductAction extends Action {
 												HttpServletResponse response) throws Exception {
 		ProductVO productVO = new ProductVO();
 
-		productVO.setProdName(request.getParameter("PROD_NAME"));
-		productVO.setProdDetail(request.getParameter("PROD_DETAIL"));
-		productVO.setManuDate(request.getParameter("MANUFACTURE_DAY"));
-		// price에서 nullpointerException
-		productVO.setPrice(Integer.parseInt(request.getParameter("PRICE").trim()));
-		productVO.setFileName(request.getParameter("IMAGE_FILE"));
+		productVO.setProdName(request.getParameter("prodName"));
+		productVO.setProdDetail(request.getParameter("prodDetail"));
+		productVO.setManuDate(request.getParameter("manuDate"));
+		productVO.setPrice(Integer.parseInt(request.getParameter("price")));
+		productVO.setFileName(request.getParameter("fileName"));
 
 		
 		System.out.println(productVO);
@@ -30,7 +29,7 @@ public class AddProductAction extends Action {
 		ProductService service=new ProductServiceImpl();
 		service.addProduct(productVO);
 		
-		// ?? 맞나?? 알아보고 고치기.
-		return "redirect:/index.jsp";
+		
+		return "forward:/product/addView.jsp";
 	}
 }

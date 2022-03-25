@@ -14,13 +14,15 @@ public class GetProductAction extends Action{
 	@Override
 	public String execute(	HttpServletRequest request,
 												HttpServletResponse response) throws Exception {
-		String prod_no=request.getParameter("prod_no");
+		
+		// 상품명으로 
+		String prod_no=request.getParameter("prodNo");
 		
 		ProductService service=new ProductServiceImpl();
 		ProductVO vo=service.getProduct(Integer.parseInt(prod_no));
 		
 		request.setAttribute("vo", vo);
 
-		return "forward:/user/readUser.jsp";
+		return "forward:/product/readProduct.jsp";
 	}
 }

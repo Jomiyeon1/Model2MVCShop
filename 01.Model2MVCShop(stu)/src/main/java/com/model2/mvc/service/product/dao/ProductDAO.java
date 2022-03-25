@@ -21,7 +21,7 @@ public class ProductDAO {
 		
 		Connection con = DBUtil.getConnection();
 
-		String sql = "select * from PRODUCT where prodNo=?";
+		String sql = "select * from PRODUCT where prod_No=?";
 		
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setInt(1, prodNo);
@@ -49,13 +49,13 @@ public class ProductDAO {
 		
 		Connection con = DBUtil.getConnection();
 
-		String sql = "insert into PRODUCT values (seq_product_prod_no.NEXTVAL,?,?,?,?,?,sysdate)";
+		String sql = "insert into PRODUCT values (seq_product_prod_no.NEXTVAL,?,?,?,?,?,to_date(sysdate,'YYYY/MM/DD HH24:MI:SS'))";
 		
 		PreparedStatement stmt = con.prepareStatement(sql);
 		
 		stmt.setString(1, productVO.getProdName());
 		stmt.setString(2, productVO.getProdDetail());
-		stmt.setString(3, productVO.getManuDate());
+		stmt.setString(3, productVO.getManuDate().replace("-", ""));
 		stmt.setInt(4, productVO.getPrice());
 		stmt.setString(5, productVO.getFileName());
 		//stmt.setDate(7, productVO.getRegDate());
@@ -72,10 +72,10 @@ public class ProductDAO {
 		String sql = "select * from PRODUCT ";
 		if (searchVO.getSearchCondition() != null) {
 			if (searchVO.getSearchCondition().equals("0")) {
-				sql += " where PROD_NAME='" + searchVO.getSearchKeyword()
+				sql += " where PROD_NO='" + searchVO.getSearchKeyword()
 						+ "'";
 			} else if (searchVO.getSearchCondition().equals("1")) {
-				sql += " where PROD_NO='" + searchVO.getSearchKeyword()
+				sql += " where PROD_NAME='" + searchVO.getSearchKeyword()
 						+ "'";
 			}
 		}
@@ -129,7 +129,7 @@ public class ProductDAO {
 		
 		Connection con = DBUtil.getConnection();
 
-		String sql = "update PRODUCT set getProdName=?,getProdDetail=?,getPrice=?,getFileName=? where getProdNo=?";
+		String sql = "update PRODUCT set ProdName=?,ProdDetail=?,Price=?,FileName=? where getProdNo=?";
 		
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setInt(1, productVO.getProdNo());
