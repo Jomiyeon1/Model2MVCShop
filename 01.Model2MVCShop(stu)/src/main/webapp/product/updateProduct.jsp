@@ -1,9 +1,12 @@
+<%@page import="com.model2.mvc.service.product.vo.ProductVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"%>
     
- <%@page import="com.model2.mvc.service.product.vo.ProductVO"%>
+
     
 <%
 	ProductVO vo = (ProductVO)request.getAttribute("productVO");
+	System.out.println("===========");
+	System.out.println("updateProduct =>"+ vo);
 %>
 
 <html>
@@ -77,7 +80,8 @@ function resetData() {
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
-<%-- 	<tr>
+	
+<%-- --%>	<tr>
 		<td width="104" class="ct_write">
 			상품번호 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
 		</td>
@@ -89,7 +93,8 @@ function resetData() {
 					<td>	</td>
 				</tr>
 			</table>
-			--%>
+<%-- --%>			
+			
 		</td>
 	</tr>
 	<tr>

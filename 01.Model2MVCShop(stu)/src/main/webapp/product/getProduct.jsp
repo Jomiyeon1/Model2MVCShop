@@ -83,7 +83,7 @@ function fncAddProduct(){
 		<td class="ct_write01">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td width="105"> <%= vo.getProdName()%>
+					<td width="105">
 						<input 	type="text" name="prodName" class="ct_input_g" 
 										style="width: 100px; height: 19px" maxLength="20" value="<%= vo.getProdName()%>">
 					</td>

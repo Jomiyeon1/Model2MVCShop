@@ -169,9 +169,8 @@ function fncGetProductList(){
 		<td></td>
 		<td align="left"><%=vo.getManuDate() %></td>
 		<td></td>
-		<td align="left"><%= vo.getProTranCode() %>
-		</td>
-		</td>	
+		<td align="left"><%= vo.getProTranCode() %></td>
+			
 	</tr>
 <% } %>
 <!-- 

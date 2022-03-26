@@ -69,7 +69,7 @@ public class ProductDAO {
 		
 		Connection con = DBUtil.getConnection();
 		
-		String sql = "select * from PRODUCT ";
+		String sql = "select * from PRODUCT";
 		if (searchVO.getSearchCondition() != null) {
 			if (searchVO.getSearchCondition().equals("0")) {
 				sql += " where PROD_NO='" + searchVO.getSearchKeyword()
@@ -137,7 +137,7 @@ public class ProductDAO {
 		stmt.setString(2, productVO.getProdDetail());
 		stmt.setString(3, productVO.getManuDate());
 		stmt.setInt(4, productVO.getPrice());
-		stmt.setString(5, productVO.getFileName());
+		stmt.setInt(5, productVO.getProdNo());
 		//stmt.setDate(7, productVO.getRegDate());
 		
 		stmt.executeUpdate();

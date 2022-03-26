@@ -21,6 +21,7 @@ public class GetProductAction extends Action{
 		ProductVO vo=service.getProduct(Integer.parseInt(prod_no));
 		
 		request.setAttribute("vo", vo);
+		System.out.println("getProductAction = > " + vo );
 
 		return "forward:/product/readProduct.jsp";
 	}

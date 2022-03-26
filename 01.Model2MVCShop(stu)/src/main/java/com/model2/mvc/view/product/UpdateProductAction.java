@@ -15,14 +15,21 @@ public class UpdateProductAction extends Action {
 	@Override
 	public String execute(	HttpServletRequest request,
 												HttpServletResponse response) throws Exception {
-		String prodNo = request.getParameter("prodNo");
 		
-		ProductVO productVO = new ProductVO();
-		productVO.setProdNo(Integer.parseInt(prodNo));
+		String prodNo = request.getParameter("prodNo");
+		int prod_no = Integer.parseInt(prodNo);
+		System.out.println("UudateProductActon prodNo => "+prodNo);
+		
+		ProductVO productVO = new ProductVO(); 
+		
+		//productVO.setProdNo(prod_no);
+		productVO.setProdName(request.getParameter("prodName"));
 		productVO.setProdDetail(request.getParameter("prodDetail"));
 		productVO.setManuDate(request.getParameter("manuDate"));
 		productVO.setPrice(Integer.parseInt(request.getParameter("price")));
 		productVO.setFileName(request.getParameter("fileName"));
+		
+		System.out.println("productVO " + productVO);
 		
 		ProductService service=new ProductServiceImpl();
 		service.updateProduct(productVO);
@@ -34,6 +41,6 @@ public class UpdateProductAction extends Action {
 			session.setAttribute("product", productVO);
 		}
 		
-		return "redirect:/getProduct.do?userNo="+prodNo;
+		return "redirect:/getProduct.do?productNo="+prod_no;
 	}
 }
