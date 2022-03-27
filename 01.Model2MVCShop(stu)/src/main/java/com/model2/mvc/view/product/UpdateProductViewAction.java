@@ -16,6 +16,7 @@ public class UpdateProductViewAction extends Action{
 												HttpServletResponse response) throws Exception {
 		
 		int prodNo=Integer.parseInt(request.getParameter("prodNo"));
+		System.out.println("updateactionView prodNO:"+ prodNo );
 		
 		ProductService service=new ProductServiceImpl();
 		ProductVO productVO=service.getProduct(prodNo);
