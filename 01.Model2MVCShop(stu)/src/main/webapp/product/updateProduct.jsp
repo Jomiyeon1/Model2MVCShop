@@ -4,9 +4,10 @@
 
     
 <%
-	ProductVO vo = (ProductVO)request.getAttribute("productVO");
+	
+	ProductVO productVO = (ProductVO)request.getAttribute("productVO");
 	System.out.println("===========");
-	System.out.println("updateProduct =>"+ vo);
+	System.out.println("updateProduct =>"+ productVO);
 %>
 
 <html>
@@ -57,7 +58,7 @@ function resetData() {
 
 <form name="detailForm"  method="post" >
 
-<input type="hidden" name="prodNo" value="<%=vo.getProdNo()%>">
+<input type="hidden" name="prodNo" value="<%=productVO.getProdNo()%>">
 
 <table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 	<tr>
@@ -89,7 +90,7 @@ function resetData() {
 		<td class="ct_write01">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td width="105"><%=vo.getProdNo()%></td>
+					<td width="105"><%=productVO.getProdNo()%></td>
 					<td>	</td>
 				</tr>
 			</table>
@@ -107,7 +108,7 @@ function resetData() {
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input type="text" name="prodName" value="<%=vo.getProdName()%>" class="ct_input_g" 
+			<input type="text" name="prodName" value="<%=productVO.getProdName()%>" class="ct_input_g" 
 						style="width:100px; height:19px"  maxLength="50" >
 		</td>
 	</tr>
@@ -119,7 +120,7 @@ function resetData() {
 		<td width="104" class="ct_write">제조일자</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input 	type="text" name="manuDate" value="<%=vo.getManuDate()%>" class="ct_input_g" 
+			<input 	type="text" name="manuDate" value="<%=productVO.getManuDate()%>" class="ct_input_g" 
 							style="width:370px; height:19px"  maxLength="100">
 		</td>
 	</tr>
@@ -128,7 +129,7 @@ function resetData() {
 		<td width="104" class="ct_write">가격</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input 	type="text" name="price" value="<%=vo.getPrice()%>" class="ct_input_g" 
+			<input 	type="text" name="price" value="<%=productVO.getPrice()%>" class="ct_input_g" 
 							style="width:370px; height:19px"  maxLength="100">
 		</td>
 	</tr>
@@ -137,7 +138,7 @@ function resetData() {
 		<td width="104" class="ct_write">상품사진</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input 	type="text" name="fileName" value="<%=vo.getFileName()%>" class="ct_input_g" 
+			<input 	type="text" name="fileName" value="<%=productVO.getFileName()%>" class="ct_input_g" 
 							style="width:370px; height:19px"  maxLength="100">
 		</td>
 	</tr>

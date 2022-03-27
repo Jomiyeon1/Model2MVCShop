@@ -14,14 +14,14 @@ public class UpdateProductViewAction extends Action{
 	@Override
 	public String execute(	HttpServletRequest request,
 												HttpServletResponse response) throws Exception {
-		int prod_no = Integer.parseInt(request.getParameter("prodNo"));
 		
-		ProductService service = new ProductServiceImpl();
-		System.out.println(prod_no);
-		ProductVO productVO = service.getProduct(prod_no);
+		int prodNo=Integer.parseInt(request.getParameter("prodNo"));
 		
-		request.setAttribute("productVO", productVO);
+		ProductService service=new ProductServiceImpl();
+		ProductVO productVO=service.getProduct(prodNo);
+		System.out.println("updateactionView productVO:"+productVO);
 		
-		return "forward:/product/updateProduct.jsp";
+		request.setAttribute("ProductVO", productVO);
+		return "forward:/product/updateProductView.jsp";
 	}
 }

@@ -47,7 +47,7 @@ System.out.println("addView productVO => " + productVO);
 <td class="ct_write01">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
-<td width="105">배</td>
+<td width="105"><%=productVO.getProdName() %></td>
 <td></td>
 </tr>
 </table>
@@ -61,7 +61,7 @@ System.out.println("addView productVO => " + productVO);
 상품상세정보 <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 </td>
 <td bgcolor="D6D6D6" width="1"></td>
-<td class="ct_write01">배1</td>
+<td class="ct_write01"><%=productVO.getProdDetail() %></td>
 </tr>
 <tr>
 <td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -71,7 +71,7 @@ System.out.println("addView productVO => " + productVO);
 제조일자<img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 </td>
 <td bgcolor="D6D6D6" width="1"></td>
-<td class="ct_write01">20220315</td>
+<td class="ct_write01"><%=productVO.getManuDate() %></td>
 </tr>
 <tr>
 <td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -81,7 +81,7 @@ System.out.println("addView productVO => " + productVO);
 가격<img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 </td>
 <td bgcolor="D6D6D6" width="1"></td>
-<td class="ct_write01">5000</td>
+<td class="ct_write01"><%=productVO.getPrice() %></td>
 </tr>
 <tr>
 <td height="1" colspan="3" bgcolor="D6D6D6"></td>

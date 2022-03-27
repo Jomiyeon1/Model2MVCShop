@@ -16,13 +16,13 @@ public class GetProductAction extends Action{
 												HttpServletResponse response) throws Exception {
 		
 		
-		String prod_no=request.getParameter("prodNo");
+		int prodNo = Integer.parseInt(request.getParameter("prodNo"));
 		ProductService service=new ProductServiceImpl();
-		ProductVO vo=service.getProduct(Integer.parseInt(prod_no));
+		ProductVO productVO = service.getProduct(prodNo);
 		
-		request.setAttribute("vo", vo);
-		System.out.println("getProductAction = > " + vo );
+		request.setAttribute("productVO", productVO);
+		System.out.println("getProductAction = > " + productVO );
 
-		return "forward:/product/readProduct.jsp";
+		return "forward:/product/getProduct.jsp";
 	}
 }
