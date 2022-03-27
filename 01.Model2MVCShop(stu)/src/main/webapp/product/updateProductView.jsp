@@ -5,9 +5,10 @@
 <%@ page import="com.model2.mvc.common.*" %>
 
 <%
+
 ProductVO productVO=(ProductVO)request.getAttribute("ProductVO");
 System.out.println("updateProductView productVO => " + productVO);
-//System.out.println("updateView menu:" + request.getParameter("menu"));
+
 %>
 
 <html>

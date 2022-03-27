@@ -18,8 +18,8 @@ public class UpdateProductViewAction extends Action{
 		int prodNo=Integer.parseInt(request.getParameter("prodNo"));
 		System.out.println("updateactionView prodNO:"+ prodNo );
 		
-		ProductService service=new ProductServiceImpl();
-		ProductVO productVO=service.getProduct(prodNo);
+		ProductService service = new ProductServiceImpl();
+		ProductVO productVO = service.getProduct(prodNo);
 		System.out.println("updateactionView productVO:"+productVO);
 		
 		request.setAttribute("ProductVO", productVO);

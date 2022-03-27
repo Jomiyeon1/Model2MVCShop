@@ -16,7 +16,7 @@ public class UpdateProductAction extends Action {
 	public String execute(	HttpServletRequest request,
 												HttpServletResponse response) throws Exception {
 
-		int prodNo = Integer.parseInt(request.getParameter("prodNo"));
+		int prodNo = (int)Integer.parseInt(request.getParameter("prodNo"));
 		System.out.println("updateProductAction ½ÃÀÛ, productVO  => "+prodNo);
 		
 		ProductVO productVO = new ProductVO(); 
@@ -32,7 +32,6 @@ public class UpdateProductAction extends Action {
 		
 		ProductService service=new ProductServiceImpl();
 		service.updateProduct(productVO);
-		
 		
 
 		return "redirect:/getProduct.do?prodNo="+prodNo;
