@@ -158,7 +158,7 @@
      
      
      
-     <Context docBase="01.Model2MVCShop(stu)_" path="/" reloadable="true" source="org.eclipse.jst.jee.server:01.Model2MVCShop(stu)_"/></Host>
+     <Context docBase="01.Model2MVCShop(stu)" path="/" reloadable="true" source="org.eclipse.jst.jee.server:01.Model2MVCShop(stu)"/></Host>
     </Engine>
   </Service>
 </Server>
