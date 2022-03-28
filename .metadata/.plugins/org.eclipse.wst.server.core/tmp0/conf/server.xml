@@ -158,7 +158,7 @@
      
      
      
-     <Context docBase="C:\Model2MVCShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\01.Model2MVCShop(stu)" path="" reloadable="true" source="org.eclipse.jst.jee.server:01.Model2MVCShop(stu)"/></Host>
+     <Context docBase="C:\Model2MVCShop\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\01.Model2MVCShop(stu)_" path="" reloadable="true" source="org.eclipse.jst.jee.server:01.Model2MVCShop(stu)_"/></Host>
     </Engine>
   </Service>
 </Server>

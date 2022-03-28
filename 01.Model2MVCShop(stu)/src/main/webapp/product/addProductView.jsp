@@ -1,7 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+
+
+
 <html>
 <head>
-<title>상품등록</title>
+<title>상품등록화면</title>
 
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
@@ -47,7 +51,7 @@ function resetData(){
 
 <body bgcolor="#ffffff" text="#000000">
 
-<form name="detailForm" method="post" >
+<form name="detailForm" method="post">
 
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>

@@ -4,9 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model2.mvc.framework.Action;
-import com.model2.mvc.service.product.ProductService;
-import com.model2.mvc.service.product.impl.ProductServiceImpl;
-import com.model2.mvc.service.product.vo.ProductVO;
+import com.model2.mvc.service.product.*;
+import com.model2.mvc.service.product.impl.*;
+import com.model2.mvc.service.product.vo.*;
 
 
 public class GetProductAction extends Action{
@@ -14,15 +14,13 @@ public class GetProductAction extends Action{
 	@Override
 	public String execute(	HttpServletRequest request,
 												HttpServletResponse response) throws Exception {
-		
-		
 		int prodNo = Integer.parseInt(request.getParameter("prodNo"));
-		ProductService service=new ProductServiceImpl();
-		ProductVO productVO = service.getProduct(prodNo);
 		
-		request.setAttribute("productVO", productVO);
-		System.out.println("getProductAction = > " + productVO );
+		ProductService service=new ProductServiceImpl();
+		ProductVO vo=service.getProduct(prodNo);
+		
+		request.setAttribute("vo", vo);
 
-		return "forward:/product/getProduct.jsp";
+		return "forward:/user/readUser.jsp";
 	}
 }

@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.model2.mvc.common.SearchVO;
 import com.model2.mvc.framework.Action;
-import com.model2.mvc.service.product.ProductService;
-import com.model2.mvc.service.product.impl.ProductServiceImpl;
+import com.model2.mvc.service.user.UserService;
+import com.model2.mvc.service.user.impl.UserServiceImpl;
 
 
 public class ListProductAction extends Action {
@@ -29,8 +29,8 @@ public class ListProductAction extends Action {
 		String pageUnit=getServletContext().getInitParameter("pageSize");
 		searchVO.setPageUnit(Integer.parseInt(pageUnit));
 		
-		ProductService service=new ProductServiceImpl();
-		HashMap<String,Object> map=service.getProductList(searchVO);
+		UserService service=new UserServiceImpl();
+		HashMap<String,Object> map=service.getUserList(searchVO);
 
 		request.setAttribute("map", map);
 		request.setAttribute("searchVO", searchVO);
