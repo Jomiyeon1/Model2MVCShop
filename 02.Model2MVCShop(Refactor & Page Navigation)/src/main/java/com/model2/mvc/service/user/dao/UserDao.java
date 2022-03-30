@@ -89,9 +89,9 @@ public class UserDao {
 		
 		if (search.getSearchCondition() != null) {
 			if ( search.getSearchCondition().equals("0") &&  !search.getSearchKeyword().equals("") ) {
-				sql += " WHERE user_id = '" + search.getSearchKeyword()+"'";
+				sql += " WHERE user_id LIKE '%" + search.getSearchKeyword()+"%'";
 			} else if ( search.getSearchCondition().equals("1") && !search.getSearchKeyword().equals("")) {
-				sql += " WHERE user_name ='" + search.getSearchKeyword()+"'";
+				sql += " WHERE user_name LIKE '%" + search.getSearchKeyword()+"%'";
 			}
 		}
 		sql += " ORDER BY user_id";
@@ -123,6 +123,7 @@ public class UserDao {
 		map.put("totalCount", new Integer(totalCount));
 		//==> currentPage 의 게시물 정보 갖는 List 저장
 		map.put("list", list);
+		System.out.println("UserDao list => " + list);
 
 		rs.close();
 		pStmt.close();
