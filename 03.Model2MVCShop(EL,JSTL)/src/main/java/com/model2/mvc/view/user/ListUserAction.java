@@ -50,3 +50,5 @@ public class ListUserAction extends Action {
 		return "forward:/user/listUser.jsp";
 	}
 }
+
+

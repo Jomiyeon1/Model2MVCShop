@@ -39,6 +39,8 @@ public class ListProductAction extends Action {
 		// 하단 페이지 번호 화면에 보여지는 수
 		int pageUnit  =  Integer.parseInt(getServletContext().getInitParameter("pageUnit"));
 		search.setPageSize(pageSize);
+		String menu = request.getParameter("menu");
+		//System.out.println("ListProduct menu => " + menu);
 		
 		// Business logic 수행
 		ProductService productService = new ProductServiceImpl();
@@ -52,6 +54,7 @@ public class ListProductAction extends Action {
 		request.setAttribute("list", map.get("list"));
 		request.setAttribute("resultPage", resultPage);
 		request.setAttribute("search", search);
+		request.setAttribute("menu", menu);
 		//System.out.println("ListProductAction list => " + map);
 		//System.out.println("ListProductAction resultPage => " + resultPage);
 		//System.out.println("ListProductAction search => " + search);

@@ -39,10 +39,8 @@
 <body bgcolor="#ffffff" text="#000000">
 
 	<div style="width: 98%; margin-left: 10px;">
-
-		<form name="detailForm" action="/listProduct.do?menu=${requestScope.menu}"
-			method="post">
-
+		<%-- //${menu} --%>
+		<form name="detailForm" action="/listProduct.do?menu=${menu}" method="post">
 			<table width="100%" height="37" border="0" cellpadding="0"
 				cellspacing="0">
 				<tr>
@@ -53,20 +51,26 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
 								<td width="93%" class="ct_ttl01">
-									<%
+								
+									<%-- <%
 									if (menu.equals("manage")) {
-									%> 상품 관리 <%
-									} else {
-									%> 상품 목록조회 <%
-									}
-									%>
+									%>  --%>
+									<c:if test="${menu == 'manage'}">
+									상품 관리 
+									</c:if>
+									<%-- <%} else {%>  --%>
+									<c:if test="${menu == 'search'}">
+									상품 목록조회 
+									</c:if>
+									<%-- <% } %> --%>
 
 								</td>
 							</tr>
 						</table>
 					</td>
-					<td width="12" height="37"><img src="/images/ct_ttl_img03.gif"
-						width="12" height="37" /></td>
+					<td width="12" height="37">
+					<img src="/images/ct_ttl_img03.gif" width="12" height="37" />
+					</td>
 				</tr>
 			</table>
 
@@ -74,16 +78,16 @@
 			<table width="100%" border="0" cellspacing="0" cellpadding="0"
 				style="margin-top: 10px;">
 				<tr>
-					<%
+<%-- 					<%
 					if (search.getSearchCondition() != null) {
-					%>
-					
-					<td align="right"><select name="searchCondition"
-						class="ct_input_g" style="width: 80px">
+					%> --%>
+					<c:if test = "${!empty search.searchCondition}" >
+						<td align="right">
+						<select name="searchCondition" class="ct_input_g" style="width: 80px">
 <%-- 							<%
 							if (search.getSearchCondition().equals("0")) {
 							%> --%>
-							<c:if test="${search.searchCondition eq '0'}">
+							<c:if test="${search.searchCondition = '0'}">
 								<option value="0" selected>상품번호</option>
 								<option value="1">상품명</option>
 								<option value="2">상품가격</option>
@@ -91,7 +95,7 @@
 <%-- 							<%
 							} else if (search.getSearchCondition().equals("1")) {
 							%> --%>
-							<c:if test="${search.searchCondition eq '1'}">
+							<c:if test="${search.searchCondition = '1'}">
 								<option value="0">상품번호</option>
 								<option value="1" selected>상품명</option>
 								<option value="2">상품가격</option>
@@ -99,7 +103,7 @@
 <%-- 							<%
 							} else {
 							%> --%>
-							<c:if test="${search.searchCondition eq '2'}">
+							<c:if test="${search.searchCondition = '2'}">
 								<option value="0">상품번호</option>
 								<option value="1">상품명</option>
 								<option value="2" selected>상품가격</option>
@@ -107,22 +111,23 @@
 <%-- 							<%
 							}
 							%> --%>
-
+						
 					</select> 
 					<input type="text" name="searchKeyword" value="${search.searchKeyword}" class="ct_input_g" style="width: 200px; height: 19px" /></td>
 					</td>
-					<%
+					</c:if>
+<%-- 					<%
 					} else {
-					%>
+					%> --%>
+					<c:if test = "${empty search.searchCondition}" >
 					<td align="right">
 					<select name="searchCondition" class="ct_input_g" style="width: 80px" >
 							<option value="0">상품번호</option>
 							<option value="1">상품명</option>
 							<option value="2" selected>상품가격</option>
 							<input type="text" name="searchKeyword" class="ct_input_g" style="width: 200px; height: 19px" /> </td>
-					<%
-					}
-					%>
+					</c:if>
+					<%-- <% } %> --%>
 					<td align="right" width="70">
 						<table border="0" cellspacing="0" cellpadding="0">
 							<tr>
@@ -169,20 +174,22 @@
 				<c:set var="i" value="0" />
 				<c:forEach var="product" items="${list}">
 					<td align="center">${ i }</td>
-					<td></td>
-					<c:if test="${menu eq 'search'}">
-						<a href="/getProduct.do?prodNo=${product.prodNo}">${product.prodName}</a>
-					</c:if>
-					<c:if test="${menu eq 'manage'}">
-						<a href="/updateProductView.do?prodNo=${product.prodNo}">${product.prodName}</a>
-					</c:if>
-					<td></td>
-					<td align="left">${product.getPrice()}</td>
-					<td></td>
-					<td align="left">${product.getManuDate()}</td>
-					<td></td>
-					<td align="left">${product.getProTranCode()}</td>
 				</c:forEach>
+					<td></td>
+				<c:if test="${menu == 'search'}">
+						<a href="/getProduct.do?prodNo=${product.prodNo}">${product.prodName}</a>
+				</c:if>
+				
+				<c:if test="${menu == 'manage'}">
+						<a href="/updateProductView.do?prodNo=${product.prodNo}">${product.prodName}</a>
+				</c:if>
+					<td></td>
+					<td align="left">${vo.price}</td>
+					<td></td>
+					<%-- <td align="left">${list.manuDate}</td>
+					<td></td>
+					<td align="left">${list.proTranCode}</td> --%>
+				
 				<%-- <tr class="ct_list_pop">
 					<td align="center"><%=no%></td> 
 					<td></td>
