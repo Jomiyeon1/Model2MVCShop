@@ -171,25 +171,29 @@
 				for (int i = 0; i < list.size(); i++) {
 					Product vo = (Product) list.get(i);
 				%> --%>
+				pudcut No = ${product.prodNo} ${vo.prodNo} ${prodNo}
 				<c:set var="i" value="0" />
 				<c:forEach var="product" items="${list}">
+					<c:set var="i" value="${ i+1 }" />
+				<tr class="ct_list_pop">
 					<td align="center">${ i }</td>
-				</c:forEach>
+					</c:forEach>
 					<td></td>
-				<c:if test="${menu == 'search'}">
+					<c:if test="${menu == 'search'}">
 						<a href="/getProduct.do?prodNo=${product.prodNo}">${product.prodName}</a>
-				</c:if>
-				
-				<c:if test="${menu == 'manage'}">
-						<a href="/updateProductView.do?prodNo=${product.prodNo}">${product.prodName}</a>
-				</c:if>
+					</c:if>
+					<c:if test="${menu == 'manage'}">
+						<a href="/updateProductView.do?prodNo=${product.prodNo}">${product.prodName}</a> 
+					</c:if>
 					<td></td>
-					<td align="left">${vo.price}</td>
+					<td align="left">${product.price}</td>
 					<td></td>
-					<%-- <td align="left">${list.manuDate}</td>
+					<td align="left">${product.manuDate}
+					</td>
 					<td></td>
-					<td align="left">${list.proTranCode}</td> --%>
-				
+					<td align="left">${product.proTranCode}
+					</td>	
+		</tr>
 				<%-- <tr class="ct_list_pop">
 					<td align="center"><%=no%></td> 
 					<td></td>
