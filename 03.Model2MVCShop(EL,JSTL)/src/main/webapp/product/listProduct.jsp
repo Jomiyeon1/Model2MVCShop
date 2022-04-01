@@ -1,26 +1,6 @@
 <%@ page contentType="text/html; charset=EUC-KR"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%-- <%@ page import="java.util.*"%>
-
-<%@ page import="com.model2.mvc.service.domain.Product"%>
-<%@ page import="com.model2.mvc.common.Search"%>
-<%@page import="com.model2.mvc.common.Page"%>
-<%@page import="com.model2.mvc.common.util.CommonUtil"%>
-
-
-<%	
-	String menu = request.getParameter("menu");
-	System.out.println("listProduct menu => "+ menu);
-	List<Product> list = (List<Product>) request.getAttribute("list");
-	System.out.println("listProduct list => "+ list);
-	Page resultPage = (Page) request.getAttribute("resultPage");
-
-	Search search = (Search) request.getAttribute("search");
-	//==> null 을 ""(nullString)으로 변경
-	String searchCondition = CommonUtil.null2str(search.getSearchCondition());
-	String searchKeyword = CommonUtil.null2str(search.getSearchKeyword());
-%> --%>
 
 <html>
 <head>
@@ -52,17 +32,14 @@
 							<tr>
 								<td width="93%" class="ct_ttl01">
 								
-									<%-- <%
-									if (menu.equals("manage")) {
-									%>  --%>
 									<c:if test="${menu == 'manage'}">
 									상품 관리 
 									</c:if>
-									<%-- <%} else {%>  --%>
+
 									<c:if test="${menu == 'search'}">
 									상품 목록조회 
 									</c:if>
-									<%-- <% } %> --%>
+
 
 								</td>
 							</tr>
@@ -75,59 +52,21 @@
 			</table>
 
 
-			<table width="100%" border="0" cellspacing="0" cellpadding="0"
-				style="margin-top: 10px;">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 				<tr>
-<%-- 					<%
-					if (search.getSearchCondition() != null) {
-					%> --%>
-					<c:if test = "${!empty search.searchCondition}" >
-						<td align="right">
+					<td align="right">
 						<select name="searchCondition" class="ct_input_g" style="width: 80px">
-<%-- 							<%
-							if (search.getSearchCondition().equals("0")) {
-							%> --%>
-							<c:if test="${search.searchCondition = '0'}">
-								<option value="0" selected>상품번호</option>
-								<option value="1">상품명</option>
-								<option value="2">상품가격</option>
-						 	</c:if>
-<%-- 							<%
-							} else if (search.getSearchCondition().equals("1")) {
-							%> --%>
-							<c:if test="${search.searchCondition = '1'}">
-								<option value="0">상품번호</option>
-								<option value="1" selected>상품명</option>
-								<option value="2">상품가격</option>
-							</c:if>
-<%-- 							<%
-							} else {
-							%> --%>
-							<c:if test="${search.searchCondition = '2'}">
-								<option value="0">상품번호</option>
-								<option value="1">상품명</option>
-								<option value="2" selected>상품가격</option>
-							</c:if>
-<%-- 							<%
-							}
-							%> --%>
+							<option value="0"${!empty search.searchCondition&&search.searchCondition==0 ? "selected":"" }>상품번호</option>
+							<option value="1"${!empty search.searchCondition&&search.searchCondition==1 ? "selected":"" }>상품명</option>
+							<option value="2"${!empty search.searchCondition&&search.searchCondition==2 ? "selected":"" }>상품가격</option>
 						
 					</select> 
-					<input type="text" name="searchKeyword" value="${search.searchKeyword}" class="ct_input_g" style="width: 200px; height: 19px" /></td>
-					</td>
-					</c:if>
-<%-- 					<%
-					} else {
-					%> --%>
-					<c:if test = "${empty search.searchCondition}" >
-					<td align="right">
-					<select name="searchCondition" class="ct_input_g" style="width: 80px" >
-							<option value="0">상품번호</option>
-							<option value="1">상품명</option>
-							<option value="2" selected>상품가격</option>
-							<input type="text" name="searchKeyword" class="ct_input_g" style="width: 200px; height: 19px" /> </td>
-					</c:if>
-					<%-- <% } %> --%>
+
+						<input 	type="text" name="searchKeyword" 
+								value="${! empty search.searchKeyword ? search.searchKeyword : "" }" 
+						 class="ct_input_g"	style="width:200px; height:20px" > 
+						 </td>
+
 					<td align="right" width="70">
 						<table border="0" cellspacing="0" cellpadding="0">
 							<tr>
@@ -162,96 +101,44 @@
 					<td class="ct_line02"></td>
 					<td class="ct_list_b">현재상태</td>
 				</tr>
+				
 				<tr>
 					<td colspan="11" bgcolor="808285" height="1"></td>
 				</tr>
 				
-			<%-- 	<%
-				int no = list.size();
-				for (int i = 0; i < list.size(); i++) {
-					Product vo = (Product) list.get(i);
-				%> --%>
-				pudcut No = ${product.prodNo} ${vo.prodNo} ${prodNo}
 				<c:set var="i" value="0" />
-				<c:forEach var="product" items="${list}">
+			  	 <c:forEach var="product" items="${list}">
 					<c:set var="i" value="${ i+1 }" />
 				<tr class="ct_list_pop">
 					<td align="center">${ i }</td>
-					</c:forEach>
 					<td></td>
-					<c:if test="${menu == 'search'}">
+					<td align="left">
+					<c:if test="${menu eq 'search'}">
 						<a href="/getProduct.do?prodNo=${product.prodNo}">${product.prodName}</a>
 					</c:if>
-					<c:if test="${menu == 'manage'}">
+					<c:if test="${menu eq 'manage'}">
 						<a href="/updateProductView.do?prodNo=${product.prodNo}">${product.prodName}</a> 
 					</c:if>
-					<td></td>
-					<td align="left">${product.price}</td>
-					<td></td>
-					<td align="left">${product.manuDate}
 					</td>
 					<td></td>
-					<td align="left">${product.proTranCode}
-					</td>	
-		</tr>
-				<%-- <tr class="ct_list_pop">
-					<td align="center"><%=no%></td> 
+					<td align="left">${product.price} </td>
 					<td></td>
-
-					<td align="left">
-						<%
-						if (menu.equals("search")) {
-						%> <a
-						href="/getProduct.do?prodNo=<%=vo.getProdNo()%>"><%=vo.getProdName()%></a>
-						<%
-						} else {
-						%> <a
-						href="/updateProductView.do?prodNo=<%=vo.getProdNo()%>"><%=vo.getProdName()%></a>
-						<%
-						}
-						%>
-
-					</td>
-
+					<td align="left">${product.manuDate} </td>
 					<td></td>
-					<td align="left">${product.getPrice()}</td>
-					<td></td>
-					<td align="left">${product.getManuDate()}</td>
-					<td></td>
-					<td align="left">${product.getProTranCode()}</td>
-				</tr>
-				<tr>
-					<td colspan="11" bgcolor="D6D7D6" height="1"></td>
-				</tr> --%>
-
+					<td align="left">${product.proTranCode} </td>	
+				 </tr>
+				  </c:forEach>
 			</table>
 
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 				<tr>
 				<td align="center">
-					<input type="hidden" id="currentPage" name="currentPage" value=""/>
-			<%-- <% if( resultPage.getCurrentPage() <= resultPage.getPageUnit() ){ %>
-					◀ 이전
-			<% }else{ %>
-					<a href="javascript:fncGetProductList('<%=resultPage.getCurrentPage()-1%>')">◀ 이전</a>
-			<% } %>
-
-			<%	for(int i=resultPage.getBeginUnitPage();i<= resultPage.getEndUnitPage() ;i++){	%>
-					<a href="javascript:fncGetProductList('<%=i %>');"><%=i %></a>
-			<% 	}  %>
-	
-			<% if( resultPage.getEndUnitPage() >= resultPage.getMaxPage() ){ %>
-					이후 ▶
-			<% }else{ %>
-					<a href="javascript:fncGetProductList('<%=resultPage.getEndUnitPage()+1%>')">이후 ▶</a>
-			<% } %> --%>
-			
-			<jsp:include page="../common/pageNavigator.jsp"/>
+		 		  <input type="hidden" id="currentPage" name="currentPage" value=""/>	
+			<jsp:include page="../common/pageNavigator2.jsp"/>
 					</td>
 				</tr>
 			</table>  
-			<!--  페이지 Navigator 끝 -->
-
+			
 		</form>
 
 	</div>

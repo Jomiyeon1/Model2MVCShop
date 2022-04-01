@@ -52,7 +52,7 @@ function fncAddProduct(){
 
 <form name="detailForm" method="post">
 
-<input type="hidden" name="prodNo" value="${product.getProdNo()}"/>
+<input type="hidden" name="prodNo" value="${product.prodNo}"/>
 
 <table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 	<tr>
@@ -87,7 +87,7 @@ function fncAddProduct(){
 				<tr>
 					<td width="105">
 						<input 	type="text" name="prodName" class="ct_input_g" 
-										style="width: 100px; height: 19px" maxLength="20" value="${product.getProdName()}">
+										style="width: 100px; height: 19px" maxLength="20" value="${product.prodName}">
 					</td>
 				</tr>
 			</table>
@@ -102,7 +102,7 @@ function fncAddProduct(){
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input type="text" name="prodDetail" value="${product.getProdDetail()}" class="ct_input_g" 
+			<input type="text" name="prodDetail" value="${product.prodDetail}" class="ct_input_g" 
 						style="width: 100px; height: 19px" maxLength="10"	minLength="6">
 		</td>
 	</tr>
@@ -115,7 +115,7 @@ function fncAddProduct(){
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input type="text" readonly="readonly" name="manuDate" value="${product.getManuDate()}" 	
+			<input type="text" readonly="readonly" name="manuDate" value="${product.manuDate}" 	
 						class="ct_input_g" style="width: 100px; height: 19px" maxLength="10" minLength="6">&nbsp;
 						<img 	src="../images/ct_icon_date.gif" width="15" height="15" 
 									onclick="show_calendar('document.detailForm.manuDate', document.detailForm.manuDate.value)" />
@@ -130,7 +130,7 @@ function fncAddProduct(){
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input type="text" name="price" value="${product.getPrice()}"
+			<input type="text" name="price" value="${product.price}"
 						class="ct_input_g" style="width: 100px; height: 19px" maxLength="50"/>&nbsp;¿ø
 		</td>
 	</tr>
@@ -142,7 +142,7 @@ function fncAddProduct(){
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input	type="text" name="fileName" class="ct_input_g" 
-						style="width: 200px; height: 19px" maxLength="13" value="${product.getFileName()}"/>
+						style="width: 200px; height: 19px" maxLength="13" value="${product.fileName}"/>
 		</td>
 	</tr>
 	<tr>

@@ -57,8 +57,8 @@ function resetData(){
 <body bgcolor="#ffffff" text="#000000">
 
 <form name="detailForm" method="post">
-			<input type="hidden" name="prodNo" class="ct_input_g"  value="${product.getProdNo()}">
-			<input type="hidden" name="menu" class="ct_input_g"  value="${requestScope.menu}">
+			<input type="hidden" name="prodNo" class="ct_input_g"  value="${product.prodNo}">
+			<input type="hidden" name="menu" class="ct_input_g"  value="${menu}">
 
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>
@@ -93,7 +93,7 @@ function resetData(){
 				<tr>
 					<td width="105">
 						<input type="text" name="prodName" class="ct_input_g" 
-									style="width: 100px; height: 19px" maxLength="20" value="${product.getProdName()}">
+									style="width: 100px; height: 19px" maxLength="20" value="${product.prodName}">
 					</td>
 				</tr>
 			</table>
@@ -109,7 +109,7 @@ function resetData(){
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input type="text" name="prodDetail" class="ct_input_g" 
-						style="width: 100px; height: 19px" maxLength="10" minLength="6" value="${product.getProdDetail()}"/>
+						style="width: 100px; height: 19px" maxLength="10" minLength="6" value="${product.prodDetail}"/>
 		</td>
 	</tr>
 	<tr>
@@ -121,7 +121,7 @@ function resetData(){
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input type="text" name="manuDate"  class="ct_input_g"  value="${product.getManuDate()}"
+			<input type="text" name="manuDate"  class="ct_input_g"  value="${product.manuDate}"
 						style="width: 100px; height: 19px"	maxLength="10" minLength="6"/>
 				&nbsp;<img src="../images/ct_icon_date.gif" width="15" height="15" 
 										onclick="show_calendar('document.detailForm.manuDate', document.detailForm.manuDate.value)"/>
@@ -136,7 +136,7 @@ function resetData(){
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input type="text" name="price" class="ct_input_g" value="${product.getPrice()}"
+			<input type="text" name="price" class="ct_input_g" value="${product.price}"
 						style="width: 100px; height: 19px" maxLength="10">&nbsp;원
 		</td>
 	</tr>
@@ -147,7 +147,7 @@ function resetData(){
 		<td width="104" class="ct_write">상품이미지</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input		type="text" name="fileName" class="ct_input_g" value="${product.getFileName() }"
+			<input		type="text" name="fileName" class="ct_input_g" value="${product.fileName }"
 							style="width: 200px; height: 19px" maxLength="13"/>
 		</td>
 	</tr>
