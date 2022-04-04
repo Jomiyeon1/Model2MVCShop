@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
 <script type="text/javascript">
-	function fncGetProductList(currentPage) {
+	function fncGetUserList(currentPage) {
 	document.getElementById("currentPage").value = currentPage;
    	document.detailForm.submit();		
 	}
@@ -134,7 +134,7 @@
 				<tr>
 				<td align="center">
 		 		  <input type="hidden" id="currentPage" name="currentPage" value=""/>	
-			<jsp:include page="../common/pageNavigator2.jsp"/>
+			<jsp:include page="../common/pageNavigator.jsp"/>
 					</td>
 				</tr>
 			</table>  
