@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProductMapper">
+ 	
+ 	
+ 	<resultMap id="productSelectMap" type="product">
+		<result property="prodNo" 			column="PROD_NO" 			jdbcType="NUMERIC"/>
+		<result property="prodName"			column="PROD_NAME" 			jdbcType="VARCHAR" />
+		<result property="prodDetail" 		column="PROD_DETAIL" 		jdbcType="VARCHAR" />
+		<result property="manuDate" 		column="MANUFACTURE_DAY" 	jdbcType="VARCHAR" />
+		<result property="price" 			column="PRICE" 				jdbcType="NUMERIC" />
+		<result property="fileName" 		column="IMAGE_FILE" 		jdbcType="VARCHAR" />
+		<result property="regDate" 			column="REG_DATE" 			jdbcType="DATE" />
+	</resultMap>
+	
+	<!-- SQL : INSERT -->
+	<insert id = "addProduct" parameterType="product">
+	 INSERT
+      INTO product 
+      VALUES (seq_product_prod_no.NEXTVAL, #{prodName}, #{prodDetail:VARCHAR}, #{manuDate:VARCHAR}, #{price:NUMERIC}, #{fileName:VARCHAR}, SYSDATE)
+	</insert>
+	
+	<!-- SQL : SELECT ONE -->
+	 <select 	id="getProduct"	parameterType="int"	resultMap="productSelectMap">
+		SELECT
+		prod_no, prod_name, prod_detail, manufacture_day, price, image_file, reg_date	
+		FROM product 
+		WHERE prod_no = #{value}
+	 </select> 
+	 
+</mapper>
