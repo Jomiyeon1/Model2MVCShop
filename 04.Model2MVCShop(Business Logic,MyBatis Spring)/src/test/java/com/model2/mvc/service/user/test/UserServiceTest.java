@@ -177,7 +177,7 @@ public class UserServiceTest {
 	 	Assert.assertEquals(3, list.size());
 	 	
 	 	//==> console 확인
-	 	//System.out.println(list);
+	 	System.out.println(list);
 	 	
 	 	totalCount = (Integer)map.get("totalCount");
 	 	System.out.println(totalCount);
@@ -212,7 +212,7 @@ public class UserServiceTest {
 	 	Assert.assertEquals(0, list.size());
 	 	
 		//==> console 확인
-	 	//System.out.println(list);
+	 	//System.out.println("***"+list);
 	 	
 	 	totalCount = (Integer)map.get("totalCount");
 	 	System.out.println(totalCount);
@@ -247,7 +247,7 @@ public class UserServiceTest {
 	 	Assert.assertEquals(0, list.size());
 	 	
 		//==> console 확인
-	 	System.out.println(list);
+	 	System.out.println("///"+list);
 	 	
 	 	totalCount = (Integer)map.get("totalCount");
 	 	System.out.println(totalCount);

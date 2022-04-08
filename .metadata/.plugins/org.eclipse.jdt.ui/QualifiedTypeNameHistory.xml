@@ -4,9 +4,11 @@
     <fullyQualifiedTypeName name="com.model2.mvc.service.product.dao.ProductDAO"/>
     <fullyQualifiedTypeName name="com.model2.mvc.service.product.ProductService"/>
     <fullyQualifiedTypeName name="com.model2.mvc.service.product.impl.ProductServiceImpl"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="com.model2.mvc.service.purchase.vo.PurchaseVO"/>
     <fullyQualifiedTypeName name="com.model2.mvc.service.user.vo.UserVO"/>
     <fullyQualifiedTypeName name="com.model2.mvc.service.product.vo.ProductVO"/>
     <fullyQualifiedTypeName name="com.model2.mvc.service.purchase.dao.PurchaseDAO"/>
+    <fullyQualifiedTypeName name="com.model2.mvc.service.domain.Product"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
 </qualifiedTypeNameHistroy>
