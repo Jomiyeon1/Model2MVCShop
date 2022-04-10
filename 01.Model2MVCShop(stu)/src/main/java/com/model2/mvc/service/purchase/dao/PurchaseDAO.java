@@ -53,7 +53,7 @@ public class PurchaseDAO {
 			purchaseVO.setDivyAddr(rs.getString("DEMAILADDR"));
 			purchaseVO.setDivyRequest(rs.getString("DLVY_REQUEST"));
 			purchaseVO.setTranCode(rs.getString("TRAN_STATUS_CODE"));
-			purchaseVO.setOrderDate(rs.getDate("ORDER_DATA"));
+			purchaseVO.setOrderDate(rs.getDate("ORDER_DATE"));
 			purchaseVO.setDivyDate(rs.getString("DLVY_DATE"));
 			
 		}
@@ -64,27 +64,31 @@ public class PurchaseDAO {
 	}
 	////////////////////////insert
 	
-		public void insertProduct(ProductVO productVO) throws Exception {
+		public void insertPurchase(PurchaseVO purchaseVO) throws Exception {
 		
 		Connection con = DBUtil.getConnection();
 
-		String sql = "insert into PRODUCT values (seq_product_prod_no.NEXTVAL,?,?,?,?,?,to_date(sysdate,'YYYY/MM/DD HH24:MI:SS'))";
+		String sql = "insert into transaction values(seq_transaction_tran_no.NEXTVAL,?, ?, ?, ?, ?, ?, ?, ?, to_date(SYSDATE, 'YYYY/MM/DD HH24:MI:SS'),to_date('2012/01/14 10:48:43', 'YYYY/MM/DD HH24:MI:SS'))";
 		
 		PreparedStatement stmt = con.prepareStatement(sql);
 		
-		stmt.setString(1, productVO.getProdName());
-		stmt.setString(2, productVO.getProdDetail());
-		stmt.setString(3, productVO.getManuDate().replace("-", ""));
-		stmt.setInt(4, productVO.getPrice());
-		stmt.setString(5, productVO.getFileName());
-		//stmt.setDate(7, productVO.getRegDate());
+		
+//		PROD_NO
+//		BUYER_ID 
+//		PAYMENT_OPTION
+//		RECEIVER_NAME 
+//		RECEIVER_PHONE
+//		DEMAILADDR
+//		DLVY_REQUEST
+//		TRAN_STATUS_CODE
+		
 		stmt.executeUpdate();
 		
 		con.close();
 	}
 
 
-	public HashMap<String,Object> getProductList(SearchVO searchVO) throws Exception {
+	public HashMap<String,Object> getPurchaseList(SearchVO searchVO, String buyer) throws Exception {
 		
 		Connection con = DBUtil.getConnection();
 		
@@ -144,7 +148,7 @@ public class PurchaseDAO {
 		return map;
 	}
 
-	public void updateProduct(ProductVO productVO) throws Exception {
+	public void updatePurchase(PurchaseVO purchaseVO) throws Exception {
 		
 		Connection con = DBUtil.getConnection();
 
@@ -164,6 +168,7 @@ public class PurchaseDAO {
 		con.close();
 	}
 	
-	
+	//SaleList
+	//updateTranCode
 
 }

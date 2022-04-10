@@ -14,13 +14,13 @@ import com.model2.mvc.service.purchase.vo.PurchaseVO;
 
 public class GetPurchaseAction extends Action{
 
-	@Override
+	
 	public String execute(	HttpServletRequest request,
 												HttpServletResponse response) throws Exception {
 		
 		
 		int tranNo = Integer.parseInt(request.getParameter("tranNo"));
-		System.out.println("GetPurchaseAction 시작, productVO  => "+tranNo);
+		System.out.println("GetPurchaseAction 시작, PurchaseVO  => "+tranNo);
 		PurchaseService service=new PurchaseServiceImpl();
 		PurchaseVO vo = service.getPurchase(tranNo);
 		

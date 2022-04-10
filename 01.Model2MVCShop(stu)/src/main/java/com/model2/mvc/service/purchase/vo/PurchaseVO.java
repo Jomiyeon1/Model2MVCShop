@@ -8,17 +8,17 @@ import com.model2.mvc.service.user.vo.UserVO;
 
 public class PurchaseVO {
 	
-	private UserVO buyer; // BUYER_ID
-	private String divyAddr; // DEMAILADDR
-	private String divyDate; // DLVY_DATE
-	private String divyRequest; //DLVY_REQUEST
-	private Date orderDate; // ORDER_DATA
-	private String paymentOption; // PAYMENT_OPTION
-	private ProductVO purchaseProd; // PROD_NO
-	private String receiverName; //RECEIVER_NAME
-	private String receiverPhone; // RECEIVER_PHONE
-	private String tranCode; // TRAN_STATUS_CODE
-	private int tranNo; //TRAN_NO
+	private UserVO buyer;           // BUYER_ID  		==> 구매자 아이디
+	private String divyAddr;        // DEMAILADDR   	==> 배송주소
+	private String divyDate;        // DLVY_DATE		==> 배송희망일
+	private String divyRequest;     //DLVY_REQUEST	    ==> 배송요청사항
+	private Date orderDate;         // ORDER_DATE 		==>주문일
+	private String paymentOption;   // PAYMENT_OPTIO    ==>결제방법
+	private ProductVO purchaseProd; // PROD_NO  		==> 상품번호
+	private String receiverName; 	// RECEIVER_NAME 	==> 수령자 이름
+	private String receiverPhone;   // RECEIVER_PHONE   ==> 수령자 전화번호
+	private String tranCode;		// TRAN_STATUS_CODE ==> 배송상태
+	private int tranNo; 			// TRAN_NO 			==>  주문번호
 	
 	public PurchaseVO(){
 	}

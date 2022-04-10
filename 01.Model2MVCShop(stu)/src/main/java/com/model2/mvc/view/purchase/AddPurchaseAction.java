@@ -11,28 +11,26 @@ import com.model2.mvc.service.purchase.PurchaseService;
 import com.model2.mvc.service.purchase.impl.PurchaseServiceImpl;
 import com.model2.mvc.service.purchase.vo.PurchaseVO;
 
-public class AddPurchaseViewAction extends Action {
+public class AddPurchaseAction extends Action {
+
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		ProductVO productvo = new ProductVO();
-		int tranNo = productvo.getProdNo();
+		
+		ProductVO productVO = new ProductVO();
+		int tranNo = productVO.getProdNo();
+		// int prodNo = Integer.parseInt(request.getParameter("prodNo"));
+		// productVO.setProdNo(Integer.parseInt(request.getParameter("prodNo")));
+		PurchaseVO purchaseVO = new PurchaseVO();
+		
+
+		System.out.println("addProductAction => " + purchaseVO);
 
 		PurchaseService service = new PurchaseServiceImpl();
-		PurchaseVO purchaseVO = service.getPurchase(tranNo);
-		System.out.println("addPurchaseActionView purchaseVO:" + purchaseVO);
+		service.addPurchase(purchaseVO);
 
 		request.setAttribute("purchaseVO", purchaseVO);
-		System.out.println("addPurchaseViewAction, purchaseVO " + purchaseVO);
 
-		////////////////////////////
-		int prodNo = Integer.parseInt(request.getParameter("prodNo"));
-		
-		ProductService service1 = new ProductServiceImpl();
-		ProductVO productVO = service1.getProduct(prodNo);
-		System.out.println("updateactionView productVO:"+productVO);
-		
-		request.setAttribute("productVO", productVO);
-		////////////////////////////////////////
 		return "forward:/purchase/addPurchaseView.jsp";
 	}
+
 }

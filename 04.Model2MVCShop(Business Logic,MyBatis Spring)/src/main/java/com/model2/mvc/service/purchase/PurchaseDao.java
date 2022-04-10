@@ -13,7 +13,7 @@ public interface PurchaseDao {
 	
 	public List<Purchase> getSaleList(Search search) throws Exception;
 	
-	public void insertPurchase(Purchase purchase) throws Exception;
+	public void addPurchase(Purchase purchase) throws Exception;
 	
 	public void updatePurchase(Purchase purchase) throws Exception;
 	

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PurchaseMapper">
+ 	
+ 	<!-- association 변경해야함. -->
+ 	<resultMap id="PurchaseSelectMap" type="purchase">
+		<result property="tranNo" 				column="TRAN_NO" 			jdbcType="NUMERIC"/>
+		<result property="purchaseProd"			column="PROD_NO" 			jdbcType="NUMERIC" />
+		<result property="buyer" 				column="BUYER_ID " 			jdbcType="VARCHAR" />
+		<result property="paymentOption" 		column="PAYMENT_OPTION" 	jdbcType="CHAR" />
+		<result property="receiverPhone" 		column="RECEIVER_PHONE " 	jdbcType="VARCHAR" />
+		<result property="divyAddr" 			column="DEMAILADDR" 		jdbcType="VARCHAR" />
+		<result property="divyRequest" 			column="DLVY_REQUEST" 		jdbcType="VARCHAR" />
+		<result property="tranCode" 			column="TRAN_STATUS_CODE" 	jdbcType="CHAR" />
+		<result property="orderDate" 			column="ORDER_DATA" 		jdbcType="DATE" />
+		<result property="divyDate" 			column="DLVY_DATE" 			jdbcType="DATE" />
+	</resultMap>
+	
+	<!-- SQL : INSERT -->
+	<insert id = "addPurchase" parameterType="product">
+	  INSERT
+      INTO transaction 
+      VALUES (#{tranNo}, #{purchaseProd}, #{buyer}, ${paymentOption}, #{receiverPhone}, #{divyAddr}, #{divyRequest},#{tranCode}, SYSDATE, #{divyDate})
+	</insert>
+
+	 
+</mapper>

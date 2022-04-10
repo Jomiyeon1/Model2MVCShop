@@ -19,9 +19,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 	}
 
 	
-	public PurchaseVO addPurchase(PurchaseVO purchaseVO) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public void addPurchase(PurchaseVO purchaseVO) throws Exception {
+		purchaseDAO.insertPurchase(purchaseVO);
 	}
 
 	
