@@ -1,20 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"%>
 
 <%@ page import="com.model2.mvc.service.product.vo.*" %> 
+<%@ page import="com.model2.mvc.service.user.vo.*" %> 
     
 <%
-	ProductVO vo=(ProductVO)request.getAttribute("productVO");
+	ProductVO vo = (ProductVO)request.getAttribute("vo");
 	System.out.println("addPurchase.jsp productVO => "+vo);
 	
+	HttpSession httpSession = request.getSession();
+	UserVO user = (UserVO)session.getAttribute("user");
+	
 %>
-
 
 <html>
 <head>
 
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
-<title> 구매화면 </title>
+<title>Insert title here</title>
 
 <script type="text/javascript" src="../javascript/calendar.js">
 </script>
@@ -51,7 +54,7 @@ function fncAddPurchase() {
 	</tr>
 </table>
 
-<input type="hidden" name="prodNo" value="<%=vo.getProdNo() %>" />
+<input type="hidden" name="prodNo" value="10003" />
 
 <table width="600" border="0" cellspacing="0" cellpadding="0"	align="center" style="margin-top: 13px;">
 	<tr>
@@ -88,7 +91,7 @@ function fncAddPurchase() {
 			상품상세정보 <img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01"><%=vo.getProdDetail() %> </td>
+		<td class="ct_write01"><%=vo.getProdDetail() %></td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -96,7 +99,7 @@ function fncAddPurchase() {
 	<tr>
 		<td width="104" class="ct_write">제조일자</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01"><%=vo.getManuDate() %> </td>
+		<td class="ct_write01"><%=vo.getManuDate() %></td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -122,7 +125,7 @@ function fncAddPurchase() {
 			구매자아이디 <img 	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">user18</td>
+		<td class="ct_write01"><%=user.getUserId() %></td>
 		<input type="hidden" name="buyerId" value="user18" />
 	</tr>
 	<tr>

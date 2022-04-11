@@ -156,12 +156,12 @@ public class PurchaseDAO {
 		
 		PreparedStatement stmt = con.prepareStatement(sql);
 		//stmt.setInt(1, productVO.getProdNo());
-		stmt.setString(1, productVO.getProdName());
-		stmt.setString(2, productVO.getProdDetail());
-		stmt.setString(3, productVO.getManuDate());
-		stmt.setInt(4, productVO.getPrice());
-		stmt.setString(5, productVO.getFileName());		
-		stmt.setInt(6, productVO.getProdNo());
+//		stmt.setString(1, productVO.getProdName());
+//		stmt.setString(2, productVO.getProdDetail());
+//		stmt.setString(3, productVO.getManuDate());
+//		stmt.setInt(4, productVO.getPrice());
+//		stmt.setString(5, productVO.getFileName());		
+//		stmt.setInt(6, productVO.getProdNo());
 		
 		stmt.executeUpdate();
 		

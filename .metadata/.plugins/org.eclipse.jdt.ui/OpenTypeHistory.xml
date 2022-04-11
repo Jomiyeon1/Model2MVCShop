@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-    <typeInfo handle="=01.Model2MVCShop\(stu)/src\/main\/java&lt;com.model2.mvc.service.purchase{PurchaseService.java[PurchaseService" modifiers="513" timestamp="1649068438962"/>
-    <typeInfo handle="=04.Model2MVCShop\(Business Logic,MyBatis Spring)/src\/main\/java&lt;com.model2.mvc.service.purchase{PurchaseDao.java[PurchaseDao" modifiers="513" timestamp="1649576466982"/>
+    <typeInfo handle="=01.Model2MVCShop\(stu)/src\/main\/java&lt;com.model2.mvc.service.purchase{PurchaseService.java[PurchaseService" modifiers="513" timestamp="1649592368743"/>
+    <typeInfo handle="=04.Model2MVCShop\(Business Logic,MyBatis Spring)/src\/main\/java&lt;com.model2.mvc.service.purchase{PurchaseDao.java[PurchaseDao" modifiers="513" timestamp="1649577529683"/>
     <typeInfo handle="=01.Model2MVCShop\(stu)/src\/main\/java&lt;com.model2.mvc.framework{Action.java[Action" modifiers="1025" timestamp="1648649164863"/>
 </typeInfoHistroy>

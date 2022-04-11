@@ -20,6 +20,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\alstk\Desktop\05.Model2MVCShop(AOP,Transaction)"/>
 			<item value="C:\Users\alstk\Desktop\z.study"/>
 			<item value="C:\Users\alstk\Desktop\04.Model2MVCShop(Business Logic,MyBatis Spring)_강사님"/>
 			<item value="C:\Users\alstk\Desktop\02.Model2MVCShop(Refactor &amp; Page Navigation)"/>

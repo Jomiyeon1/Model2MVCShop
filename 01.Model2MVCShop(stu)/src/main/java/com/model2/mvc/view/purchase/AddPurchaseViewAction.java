@@ -7,31 +7,19 @@ import com.model2.mvc.framework.Action;
 import com.model2.mvc.service.product.ProductService;
 import com.model2.mvc.service.product.impl.ProductServiceImpl;
 import com.model2.mvc.service.product.vo.ProductVO;
-import com.model2.mvc.service.purchase.PurchaseService;
-import com.model2.mvc.service.purchase.impl.PurchaseServiceImpl;
-import com.model2.mvc.service.purchase.vo.PurchaseVO;
 
 public class AddPurchaseViewAction extends Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		ProductVO productvo = new ProductVO();
-		int tranNo = productvo.getProdNo();
-
-		PurchaseService service = new PurchaseServiceImpl();
-		PurchaseVO purchaseVO = service.getPurchase(tranNo);
-		System.out.println("addPurchaseActionView purchaseVO:" + purchaseVO);
-
-		request.setAttribute("purchaseVO", purchaseVO);
-		System.out.println("addPurchaseViewAction, purchaseVO " + purchaseVO);
-
-		////////////////////////////
-		int prodNo = Integer.parseInt(request.getParameter("prodNo"));
+		int prodNo = Integer.parseInt(request.getParameter("prod_no"));
+		System.out.println("AddPurchaseViewAction ½ÃÀÛ, productVO  => "+prodNo);
 		
-		ProductService service1 = new ProductServiceImpl();
-		ProductVO productVO = service1.getProduct(prodNo);
-		System.out.println("updateactionView productVO:"+productVO);
+		ProductService service=new ProductServiceImpl();
+		ProductVO vo = service.getProduct(prodNo);
 		
-		request.setAttribute("productVO", productVO);
+		request.setAttribute("vo", vo);
+		System.out.println("AddPurchaseViewAction = > " + vo );
+		
 		////////////////////////////////////////
 		return "forward:/purchase/addPurchaseView.jsp";
 	}

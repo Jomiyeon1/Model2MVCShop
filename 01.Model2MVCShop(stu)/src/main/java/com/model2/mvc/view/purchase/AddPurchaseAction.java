@@ -16,21 +16,27 @@ public class AddPurchaseAction extends Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		
-		ProductVO productVO = new ProductVO();
-		int tranNo = productVO.getProdNo();
-		// int prodNo = Integer.parseInt(request.getParameter("prodNo"));
-		// productVO.setProdNo(Integer.parseInt(request.getParameter("prodNo")));
-		PurchaseVO purchaseVO = new PurchaseVO();
+		int prodNo = Integer.parseInt(request.getParameter("prodNo"));
+		System.out.println("AddpurchaseAction ½ÃÀÛ, productVO  => "+prodNo);
 		
+		ProductVO productVO = new ProductVO(); 	
+		productVO.setProdNo(prodNo);
+		productVO.setProdName(request.getParameter("prodName"));
+		productVO.setProdDetail(request.getParameter("prodDetail"));
+		productVO.setManuDate(request.getParameter("manuDate"));
+		productVO.setPrice(Integer.parseInt(request.getParameter("price")));
+		productVO.setFileName(request.getParameter("fileName"));
+		
+		
+		
+		ProductService service=new ProductServiceImpl();
+		service.updateProduct(productVO);
+		
+		
+		System.out.println("AddpurchaseAction setting ÈÄ, productVO " + productVO);
 
-		System.out.println("addProductAction => " + purchaseVO);
+		return "redirect:/addPurchaseView.do?prod_no="+prodNo;
 
-		PurchaseService service = new PurchaseServiceImpl();
-		service.addPurchase(purchaseVO);
-
-		request.setAttribute("purchaseVO", purchaseVO);
-
-		return "forward:/purchase/addPurchaseView.jsp";
 	}
 
 }
