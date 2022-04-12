@@ -68,11 +68,19 @@ public class PurchaseDAO {
 		
 		Connection con = DBUtil.getConnection();
 
-		String sql = "insert into transaction values(seq_transaction_tran_no.NEXTVAL,?, ?, ?, ?, ?, ?, ?, ?, to_date(SYSDATE, 'YYYY/MM/DD HH24:MI:SS'),to_date('2012/01/14 10:48:43', 'YYYY/MM/DD HH24:MI:SS'))";
+		String sql = "insert into transaction values(seq_transaction_tran_no.NEXTVAL,?, ?, ?, ?, ?, ?, ?, ?,to_date(SYSDATE, 'YYYY/MM/DD HH24:MI:SS'),to_date('2012/01/14 10:48:43', 'YYYY/MM/DD HH24:MI:SS'))";
 		
 		PreparedStatement stmt = con.prepareStatement(sql);
 		
-		
+		stmt.setInt(1, purchaseVO.getPurchaseProd().getProdNo());
+		stmt.setString(2, purchaseVO.getBuyer().getUserId());
+		stmt.setString(3, purchaseVO.getPaymentOption());
+		stmt.setString(4, purchaseVO.getReceiverName());
+		stmt.setString(5, purchaseVO.getReceiverPhone());
+		stmt.setString(6, purchaseVO.getDivyAddr());
+		stmt.setString(7, purchaseVO.getDivyRequest());
+		stmt.setInt(8, purchaseVO.getTranNo());
+				
 //		PROD_NO
 //		BUYER_ID 
 //		PAYMENT_OPTION

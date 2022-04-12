@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 
+<%@ page import="com.model2.mvc.service.purchase.vo.*" %>
+
+<% 
+
+	PurchaseVO vo = (PurchaseVO)request.getAttribute("purchaseVO"); 
+
+	System.out.println("addPurchase.jsp purchaseVO => " + vo);
+
+%>
 
 <html>
 <head>
@@ -16,12 +25,12 @@
 <table border=1>
 	<tr>
 		<td>물품번호</td>
-		<td>10002</td>
+		<td><%=vo.getPurchaseProd().getProdNo() %></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>구매자아이디</td>
-		<td>user18</td>
+		<td><%=vo.getBuyer().getUserId() %></td>
 		<td></td>
 	</tr>
 	<tr>
@@ -35,27 +44,27 @@
 	</tr>
 	<tr>
 		<td>구매자이름</td>
-		<td>SCOTT</td>
+		<td><%=vo.getReceiverName() %></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>구매자연락처</td>
-		<td>01000001111</td>
+		<td><%=vo.getReceiverPhone() %></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>구매자주소</td>
-		<td>비트</td>
+		<td><%=vo.getDivyAddr() %></td>
 		<td></td>
 	</tr>
 		<tr>
 		<td>구매요청사항</td>
-		<td>ㅇ</td>
+		<td><%=vo.getDivyRequest() %></td>
 		<td></td>
 	</tr>
 	<tr>
 		<td>배송희망일자</td>
-		<td>2022-03-26</td>
+		<td><%=vo.getDivyDate() %></td>
 		<td></td>
 	</tr>
 </table>

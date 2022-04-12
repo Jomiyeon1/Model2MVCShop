@@ -5,10 +5,11 @@
     
 <%
 	ProductVO vo = (ProductVO)request.getAttribute("vo");
-	System.out.println("addPurchase.jsp productVO => "+vo);
+	System.out.println("addPurchase.jsp productVO => "+ vo);
 	
-	HttpSession httpSession = request.getSession();
+	session = request.getSession();
 	UserVO user = (UserVO)session.getAttribute("user");
+	System.out.println("addPurchase.jsp UserVO => "+ user);
 	
 %>
 
@@ -126,7 +127,7 @@ function fncAddPurchase() {
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01"><%=user.getUserId() %></td>
-		<input type="hidden" name="buyerId" value="user18" />
+		<input type="hidden" name="buyerId" value="<%=user.getUserId() %>" />
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -150,7 +151,7 @@ function fncAddPurchase() {
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input type="text" name="receiverName" 	class="ct_input_g" 
-						style="width: 100px; height: 19px" maxLength="20" value="SCOTT" />
+						style="width: 100px; height: 19px" maxLength="20" value="<%=user.getUserName() %>" />
 		</td>
 	</tr>
 	<tr>
@@ -161,7 +162,7 @@ function fncAddPurchase() {
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input 	type="text" name="receiverPhone" class="ct_input_g" 
-							style="width: 100px; height: 19px" maxLength="20" value="null" />
+							style="width: 100px; height: 19px" maxLength="20" value="<%=user.getPhone() %>" />
 		</td>
 	</tr>
 	<tr>
@@ -172,7 +173,7 @@ function fncAddPurchase() {
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input 	type="text" name="receiverAddr" class="ct_input_g" 
-							style="width: 100px; height: 19px" maxLength="20" 	value="null" />
+							style="width: 100px; height: 19px" maxLength="20" 	value="<%=user.getAddr() %>" />
 		</td>
 	</tr>
 	<tr>
