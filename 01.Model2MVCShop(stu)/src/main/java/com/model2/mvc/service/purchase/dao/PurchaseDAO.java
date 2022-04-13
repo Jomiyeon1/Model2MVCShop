@@ -100,17 +100,20 @@ public class PurchaseDAO {
 		
 		Connection con = DBUtil.getConnection();
 		
-		String sql = "select * from PRODUCT";
-		if (searchVO.getSearchCondition() != null) {
-			if (searchVO.getSearchCondition().equals("0")) {
-				sql += " where PROD_NO='" + searchVO.getSearchKeyword()
-						+ "'";
-			} else if (searchVO.getSearchCondition().equals("1")) {
-				sql += " where PROD_NAME='" + searchVO.getSearchKeyword()
-						+ "'";
-			}
-		}
-		sql += " order by PROD_NO";
+		String sql = "select\n"
+					+ "u.user_id, u.user_name, t.receiver_phone, t.tran_status_code\n"
+					+ "from users u, transaction t\n"
+					+ "where u.user_id = t.buyer_id;"; // Äõ¸® ok
+//		if (searchVO.getSearchCondition() != null) {
+//			if (searchVO.getSearchCondition().equals("0")) {
+//				sql += " where PROD_NO='" + searchVO.getSearchKeyword()
+//						+ "'";
+//			} else if (searchVO.getSearchCondition().equals("1")) {
+//				sql += " where PROD_NAME='" + searchVO.getSearchKeyword()
+//						+ "'";
+//			}
+//		}
+//		sql += " order by PROD_NO";
 
 		PreparedStatement stmt = 
 			con.prepareStatement(	sql,
@@ -132,6 +135,7 @@ public class PurchaseDAO {
 		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
 		if (total > 0) {
 			for (int i = 0; i < searchVO.getPageUnit(); i++) {
+				//¼öÁ¤ Áß..
 				ProductVO productVO = new ProductVO();
 				productVO = new ProductVO();
 				productVO.setProdNo(rs.getInt("PROD_NO"));
