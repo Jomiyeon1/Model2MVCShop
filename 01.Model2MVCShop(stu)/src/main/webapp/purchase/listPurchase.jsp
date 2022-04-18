@@ -66,7 +66,7 @@
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0"	style="margin-top: 10px;">
 	<tr>
-		<td colspan="11">전체 2 건수, 현재 1 페이지</td>
+		<td colspan="11">전체  <%= total%> 건수, 현재 <%=currentPage %> 페이지</td>
 	</tr>
 	<tr>
 		<td class="ct_list_b" width="100">No</td>
@@ -93,7 +93,7 @@
 	
 	<tr class="ct_list_pop">
 		<td align="center">
-			<a href="/getPurchase.do?tranNo=10182">2</a>
+			<a href="/getPurchase.do?tranNo=<%=purchaseVO.getTranNo() %>"><%=no-- %></a>
 		</td>
 		<td></td>
 		<td align="left">
@@ -104,10 +104,7 @@
 		<td></td>
 		<td align="left"><%=purchaseVO.getReceiverPhone() %></td>
 		<td></td>
-		<td align="left">현재
-				
-					구매완료
-				상태 입니다.</td>
+		<td align="left"><%=purchaseVO.getTranCode() %></td>
 		<td></td>
 		<td align="left">
 			
@@ -123,9 +120,13 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 	<tr>
 		<td align="center">
-		 
-			<a href="/listPurchase.do?page=1">1</a> 
-		
+		<%
+			for(int i=1;i<=totalPage;i++){
+		%>
+			<a href="/listPurchase.do?page=<%=i%>"><%=i %></a>
+		<%
+			}
+		%>	
 		</td>
 	</tr>
 </table>

@@ -18,37 +18,38 @@ public class PurchaseDAO {
 	public PurchaseDAO() {
 		// TODO Auto-generated constructor stub
 	}
-	////////////////// find
+	
+	// 수정 중..
 	public PurchaseVO findPurchase(int tranNo) throws Exception {
 		
 		Connection con = DBUtil.getConnection();
 
-		String sql = "SELECT * FROM transaction WHERE tran_no=?";
+		String sql = "SELECT * FROM transaction WHERE tran_no = ?";
 		
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setInt(1, tranNo);
 
 		ResultSet rs = stmt.executeQuery();
 
-		PurchaseVO purchaseVO = null;
+		PurchaseVO purchaseVO = new PurchaseVO();
 		UserVO userVO = new UserVO();
 		ProductVO productVO = new ProductVO();
 		
-		
+		//System.out.println("=======");
 		while (rs.next()) {
 			
-			userVO.setUserId(rs.getString("user_id"));
 			productVO.setProdNo(rs.getInt("prod_no"));
+			userVO.setUserId(rs.getString("buyer_id"));
+			System.out.println("UserVO, ProductVO");
 			
-			
-			purchaseVO = new PurchaseVO();
 			purchaseVO.setTranNo(rs.getInt("TRAN_NO"));
+			System.out.println("tranNo");
 			// object 
 			purchaseVO.setPurchaseProd(productVO);
 			purchaseVO.setBuyer(userVO);
 			// object
 			purchaseVO.setPaymentOption(rs.getString("PAYMENT_OPTION"));
-			purchaseVO.setReceiverName(rs.getString("RECEIVER_NAME "));
+			purchaseVO.setReceiverName(rs.getString("RECEIVER_NAME"));
 			purchaseVO.setReceiverPhone(rs.getString("RECEIVER_PHONE"));
 			purchaseVO.setDivyAddr(rs.getString("DEMAILADDR"));
 			purchaseVO.setDivyRequest(rs.getString("DLVY_REQUEST"));
@@ -95,15 +96,17 @@ public class PurchaseDAO {
 		con.close();
 	}
 
-
+		// OK
 	public HashMap<String,Object> getPurchaseList(SearchVO searchVO, String buyer) throws Exception {
 		
 		Connection con = DBUtil.getConnection();
 		
 		String sql = "select\n"
-					+ "u.user_id, u.user_name, t.receiver_phone, t.tran_status_code\n"
-					+ "from users u, transaction t\n"
-					+ "where u.user_id = t.buyer_id;"; // 쿼리 ok
+				+ "t.prod_no, t.tran_no, u.user_id, t.RECEIVER_NAME, t.receiver_phone, t.TRAN_STATUS_CODE\n"
+				+ "from users u, transaction t, product p\n"
+				+ "where u.user_id = t.buyer_id\n"
+				+ "AND p.prod_no = t.prod_no\n"
+				+ "AND t.buyer_id = ?"; // 쿼리 ok
 //		if (searchVO.getSearchCondition() != null) {
 //			if (searchVO.getSearchCondition().equals("0")) {
 //				sql += " where PROD_NO='" + searchVO.getSearchKeyword()
@@ -119,6 +122,7 @@ public class PurchaseDAO {
 			con.prepareStatement(	sql,
 														ResultSet.TYPE_SCROLL_INSENSITIVE,
 														ResultSet.CONCUR_UPDATABLE);
+		stmt.setString(1, buyer);
 		ResultSet rs = stmt.executeQuery();
 
 		rs.last();
@@ -131,28 +135,39 @@ public class PurchaseDAO {
 		rs.absolute(searchVO.getPage() * searchVO.getPageUnit() - searchVO.getPageUnit()+1);
 		System.out.println("searchVO.getPage():" + searchVO.getPage());
 		System.out.println("searchVO.getPageUnit():" + searchVO.getPageUnit());
-
-		ArrayList<ProductVO> list = new ArrayList<ProductVO>();
+		
+		/////
+		System.out.println("============================");
+		System.out.println("============================");
+		ArrayList<PurchaseVO> list = new ArrayList<PurchaseVO>();
 		if (total > 0) {
 			for (int i = 0; i < searchVO.getPageUnit(); i++) {
-				//수정 중..
+				PurchaseVO purchaseVO = new PurchaseVO();
+				UserVO userVO = new UserVO();
 				ProductVO productVO = new ProductVO();
-				productVO = new ProductVO();
-				productVO.setProdNo(rs.getInt("PROD_NO"));
-				productVO.setProdName(rs.getString("PROD_NAME"));
-				productVO.setProdDetail(rs.getString("PROD_DETAIL"));
-				productVO.setManuDate(rs.getString("MANUFACTURE_DAY"));
-				productVO.setPrice(rs.getInt("PRICE"));
-				productVO.setFileName(rs.getString("IMAGE_FILE"));
-				productVO.setRegDate(rs.getDate("REG_DATE"));
+				
+				productVO.setProdNo(rs.getInt("prod_no"));
+				userVO.setUserId(rs.getString("user_id"));
+				
+				//수정 중..
+				
+				purchaseVO.setTranNo(rs.getInt("TRAN_NO"));
+				// object 
+				purchaseVO.setPurchaseProd(productVO);
+				purchaseVO.setBuyer(userVO);
+				// object
+				purchaseVO.setReceiverName(rs.getString("RECEIVER_NAME"));
+				purchaseVO.setReceiverPhone(rs.getString("RECEIVER_PHONE"));
+				purchaseVO.setTranCode(rs.getString("TRAN_STATUS_CODE"));
 
-				list.add(productVO);
+				list.add(purchaseVO);
 				if (!rs.next())
 					break;
 			}
 		}
 		System.out.println("list.size() : "+ list.size());
 		map.put("list", list);
+		//System.out.println("PurchaseDAO list = > " + list);
 		System.out.println("map().size() : "+ map.size());
 
 		con.close();

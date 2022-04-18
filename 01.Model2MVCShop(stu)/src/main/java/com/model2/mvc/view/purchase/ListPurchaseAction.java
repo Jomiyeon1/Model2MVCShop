@@ -35,16 +35,19 @@ public class ListPurchaseAction extends Action {
 		HttpSession session = request.getSession();
 		UserVO user = (UserVO)session.getAttribute("user");
 		System.out.println("addPurchase.jsp UserVO => "+ user);
+		//정상출력 ok
 
 		
-		String buyerId = user.getUserId();
-		System.out.println("ListPurchaseAction buyerId : " + buyerId);
+		String buyer = user.getUserId();
+		System.out.println("ListPurchaseAction buyerId : " + buyer);
+		//정상출력 ok
 		
 		PurchaseService service=new PurchaseServiceImpl();
-		HashMap<String,Object> map=service.getPurchaseList(searchVO, buyerId);
+		HashMap<String,Object> map = service.getPurchaseList(searchVO, buyer);
 
 		request.setAttribute("map", map);
 		request.setAttribute("searchVO", searchVO);
+		System.out.println("ListPurchaseAction.java map => " + map);
 		
 		return "forward:/purchase/listPurchase.jsp";
 	}

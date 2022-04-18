@@ -27,6 +27,6 @@ public class GetPurchaseAction extends Action{
 		request.setAttribute("vo", vo);
 		System.out.println("GetPurchaseAction = > " + vo );
 
-		return "forward:/product/getPurchase.jsp";
+		return "forward:/purchase/getPurchase.jsp";
 	}
 }
