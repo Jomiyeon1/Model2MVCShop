@@ -20,12 +20,12 @@ public class GetPurchaseAction extends Action{
 		
 		
 		int tranNo = Integer.parseInt(request.getParameter("tranNo"));
-		System.out.println("GetPurchaseAction 시작, PurchaseVO  => "+tranNo);
-		PurchaseService service=new PurchaseServiceImpl();
+		System.out.println("GetPurchaseAction 시작, tranNo  => "+tranNo);
+		PurchaseService service = new PurchaseServiceImpl();
 		PurchaseVO vo = service.getPurchase(tranNo);
-		
+
 		request.setAttribute("vo", vo);
-		System.out.println("GetPurchaseAction = > " + vo );
+		System.out.println("GetPurchaseAction  = > " + vo );
 
 		return "forward:/purchase/getPurchase.jsp";
 	}
