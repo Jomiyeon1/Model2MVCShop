@@ -73,13 +73,13 @@
 		<td class="ct_line02"></td>
 		<td class="ct_list_b" width="150">회원ID</td>
 		<td class="ct_line02"></td>
-		<td class="ct_list_b" width="150">회원명</td>
+		<td class="ct_list_b" width="150">수령인</td>
 		<td class="ct_line02"></td>
-		<td class="ct_list_b">전화번호</td>
+		<td class="ct_list_b">수령인 연락처</td>
 		<td class="ct_line02"></td>
-		<td class="ct_list_b">배송현황</td>
+		<td class="ct_list_b">배송 현황</td>
 		<td class="ct_line02"></td>
-		<td class="ct_list_b">정보수정</td>
+		<td class="ct_list_b">수령 확인</td>
 	</tr>
 	<tr>
 		<td colspan="11" bgcolor="808285" height="1"></td>
@@ -104,12 +104,26 @@
 		<td></td>
 		<td align="left"><%=purchaseVO.getReceiverPhone() %></td>
 		<td></td>
-		<td align="left"><%=purchaseVO.getTranCode() %></td>
+		<td align="center">
+		<%-- <%=purchaseVO.getTranCode() %> --%>
+		<% if(purchaseVO.getTranCode().equals(1)){ %>
+				현재 배송 중 상태입니다.
+		<% } %>
+		<% if(purchaseVO.getTranCode().equals(2)){ %>
+				현재 배송 완료 상태입니다.
+		<% }else {%>
+				현재 구매 완료 상태입니다.
+		<%} %>
+		
+		</td>
 		<td></td>
-		<td align="left">
+		<td align="center">
+			
+			<a href="/updateTranCode.do?tranNo=<%=purchaseVO.getTranNo() %>&tranCode=2">수령 완료</a>
 			
 		</td>
 	</tr>
+	
 	<tr>
 		<td colspan="11" bgcolor="D6D7D6" height="1"></td>
 	</tr>

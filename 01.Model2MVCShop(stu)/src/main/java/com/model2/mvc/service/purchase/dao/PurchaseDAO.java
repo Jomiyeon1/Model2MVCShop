@@ -106,7 +106,8 @@ public class PurchaseDAO {
 				+ "from users u, transaction t, product p\n"
 				+ "where u.user_id = t.buyer_id\n"
 				+ "AND p.prod_no = t.prod_no\n"
-				+ "AND t.buyer_id = ?"; // Äõ¸® ok
+				+ "AND t.buyer_id = ?\n"
+				+ "ORDER BY TRAN_NO DESC"; // Äõ¸® ok
 //		if (searchVO.getSearchCondition() != null) {
 //			if (searchVO.getSearchCondition().equals("0")) {
 //				sql += " where PROD_NO='" + searchVO.getSearchKeyword()
