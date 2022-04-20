@@ -105,15 +105,17 @@
 		<td align="left"><%=purchaseVO.getReceiverPhone() %></td>
 		<td></td>
 		<td align="center">
-		<%-- <%=purchaseVO.getTranCode() %> --%>
-		<% if(purchaseVO.getTranCode().equals(1)){ %>
+		<%--  <%=purchaseVO.getTranCode() %> --%>
+		<% if(purchaseVO.getTranCode().trim().equals("0")){ %>
+				현재 구매 완료 상태입니다.
+		<% } %>
+		<% if(purchaseVO.getTranCode().trim().equals("1")){ %>
 				현재 배송 중 상태입니다.
 		<% } %>
-		<% if(purchaseVO.getTranCode().equals(2)){ %>
+		<% if(purchaseVO.getTranCode().trim().equals("2")){ %>
 				현재 배송 완료 상태입니다.
-		<% }else {%>
-				현재 구매 완료 상태입니다.
-		<%} %>
+		<% }%>
+			
 		
 		</td>
 		<td></td>
