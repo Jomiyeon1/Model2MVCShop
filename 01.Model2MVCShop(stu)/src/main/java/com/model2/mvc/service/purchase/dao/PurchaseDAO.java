@@ -19,7 +19,7 @@ public class PurchaseDAO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	// 수정 중..
+	
 	public PurchaseVO findPurchase(int tranNo) throws Exception {
 		
 		Connection con = DBUtil.getConnection();
@@ -180,23 +180,43 @@ public class PurchaseDAO {
 		
 		Connection con = DBUtil.getConnection();
 
-		String sql = "update product set PROD_NAME=?,PROD_DETAIL=?,MANUFACTURE_DAY=?,PRICE=?,IMAGE_FILE=? where PROD_NO=?";
+		String sql = "UPDATE transaction set\n"
+					+ "payment_option = ?, receiver_name = ?, receiver_phone = ?, demailaddr = ?, dlvy_request = ?, dlvy_date = ?\n"
+					+ "WHERE tran_no = ?";
 		
 		PreparedStatement stmt = con.prepareStatement(sql);
-		//stmt.setInt(1, productVO.getProdNo());
-//		stmt.setString(1, productVO.getProdName());
-//		stmt.setString(2, productVO.getProdDetail());
-//		stmt.setString(3, productVO.getManuDate());
-//		stmt.setInt(4, productVO.getPrice());
-//		stmt.setString(5, productVO.getFileName());		
-//		stmt.setInt(6, productVO.getProdNo());
+		
+		stmt.setString(1, purchaseVO.getPaymentOption());
+		System.out.println(purchaseVO.getPaymentOption());
+		stmt.setString(2, purchaseVO.getReceiverName());
+		stmt.setString(3, purchaseVO.getReceiverPhone());
+		stmt.setString(4, purchaseVO.getDivyAddr());
+		stmt.setString(5, purchaseVO.getDivyRequest());
+		stmt.setString(6, purchaseVO.getDivyDate().replace("-", ""));
+		stmt.setInt(7, purchaseVO.getTranNo());
 		
 		stmt.executeUpdate();
 		
 		con.close();
+		
+
+	}
+	
+	
+	//updateTranCode => 수정중
+	public void updateTranCode(PurchaseVO purchaseVO)throws Exception {
+		Connection con = DBUtil.getConnection();
+		
+		String sql = "";
+		PreparedStatement stmt = con.prepareStatement(sql);
+		
+		
+		stmt.executeUpdate();
+		
+		con.close();
+		
 	}
 	
 	//SaleList
-	//updateTranCode
 
 }

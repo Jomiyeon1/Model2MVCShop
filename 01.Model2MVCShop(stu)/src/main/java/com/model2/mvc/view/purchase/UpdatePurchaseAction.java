@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model2.mvc.framework.Action;
+import com.model2.mvc.service.purchase.PurchaseService;
+import com.model2.mvc.service.purchase.impl.PurchaseServiceImpl;
 import com.model2.mvc.service.purchase.vo.PurchaseVO;
 import com.model2.mvc.service.user.vo.UserVO;
 
@@ -24,14 +26,20 @@ public class UpdatePurchaseAction extends Action {
 		PurchaseVO purchaseVO = new PurchaseVO();
 		purchaseVO.setTranNo(tranNo);
 		purchaseVO.setBuyer(userVO);
-		purchaseVO.setPaymentOption("paymentOption");
-		purchaseVO.setReceiverName("receiverName");
-		purchaseVO.setReceiverPhone("receiverPhone");
-		purchaseVO.setDivyAddr("receiverAddr");
-		purchaseVO.setDivyRequest("receiverRequest");
-		purchaseVO.setDivyDate("divyDate");
+		purchaseVO.setPaymentOption(request.getParameter("paymentOption"));
+		purchaseVO.setReceiverName(request.getParameter("receiverName"));
+		purchaseVO.setReceiverPhone(request.getParameter("receiverPhone"));
+		purchaseVO.setDivyAddr(request.getParameter("receiverAddr"));
+		purchaseVO.setDivyRequest(request.getParameter("receiverRequest"));
+		purchaseVO.setDivyDate(request.getParameter("divyDate"));
 		
-		System.out.println("updatePurchaseAction.java purchaseVO => " + purchaseVO);
+		
+		PurchaseService service = new PurchaseServiceImpl();
+		service.updatePurchase(purchaseVO);
+		
+		System.out.println("updatePurchaseAction.java ¼öÁ¤ ÈÄ purchaseVO => " + purchaseVO);
+		
+		
 		
 		return "redirect:/getPurchase.do?tranNo="+tranNo;
 	}
