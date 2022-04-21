@@ -20,48 +20,16 @@ public class UpdateTranCodeAction extends Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		
-		SearchVO searchVO=new SearchVO();
-		
-		int page=1;
-		if(request.getParameter("page") != null)
-			page=Integer.parseInt(request.getParameter("page"));
-		
-		searchVO.setPage(page);
-		searchVO.setSearchCondition(request.getParameter("searchCondition"));
-		searchVO.setSearchKeyword(request.getParameter("searchKeyword"));
-		
-		String pageUnit=getServletContext().getInitParameter("pageSize");
-		searchVO.setPageUnit(Integer.parseInt(pageUnit));
-		
-		
+			
 		int tranNo = Integer.parseInt(request.getParameter("tranNo"));
 		
-		HttpSession session = request.getSession();
-		UserVO user = (UserVO)session.getAttribute("user");
-		String buyer = user.getUserId();
+		PurchaseVO purchaseVO = new PurchaseVO();
+		purchaseVO.setTranNo(tranNo);
+		System.out.println("updateTranCode tran_no => " + tranNo);
 		
-		System.out.println("GetPurchaseAction 시작, tranNo  => "+tranNo);
 		PurchaseService service = new PurchaseServiceImpl();
-		PurchaseVO vo = service.getPurchase(tranNo);
-		System.out.println("TranCodeAction vo => " + vo);
-		
-		///////////////////////////////
-		// DAO updateTranCode 구현 후 다시만들어야함.
-		/////////////////////////////////
-		
-		if(vo.getTranCode().trim().equals("0") || vo.getTranCode().trim().equals("1")) {
-			vo.setTranCode("2");
-		}
-		
-		PurchaseService service2 = new PurchaseServiceImpl();
-		HashMap<String,Object> map = service2.getPurchaseList(searchVO, buyer);
-		
-		request.setAttribute("map", map);
-		request.setAttribute("searchVO", searchVO);
-		
-		System.out.println("TranCodeAction.java map => " + map);
+		service.updateTranCode(purchaseVO);
+
 		
 		return "forward:/purchase/listPurchase.jsp";
 	}

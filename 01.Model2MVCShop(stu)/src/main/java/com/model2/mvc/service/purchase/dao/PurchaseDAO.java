@@ -207,9 +207,16 @@ public class PurchaseDAO {
 	public void updateTranCode(PurchaseVO purchaseVO)throws Exception {
 		Connection con = DBUtil.getConnection();
 		
-		String sql = "";
+		String sql = "UPDATE transaction SET";
+				if(purchaseVO.getTranCode().trim().equals("0")) {
+					sql += "tran_status_code = 1 \n" ; 
+				}else if(purchaseVO.getTranCode().trim().equals("1")) {
+					 sql += "tran_status_code = 2 \n" ;
+				}
+					sql += "WHERE tran_no = ?";
+					
 		PreparedStatement stmt = con.prepareStatement(sql);
-		
+		stmt.setInt(1, purchaseVO.getTranNo());
 		
 		stmt.executeUpdate();
 		
