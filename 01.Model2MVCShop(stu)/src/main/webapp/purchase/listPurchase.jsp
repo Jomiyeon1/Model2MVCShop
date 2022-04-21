@@ -114,12 +114,14 @@
 				현재 배송 완료 상태입니다.
 		<% }%>
 			
-		
 		</td>
 		<td></td>
 		<td align="center">
-			
+			<% if(purchaseVO.getTranCode().trim().equals("0")){ %>
 			<a href="/updateTranCode.do?tranNo=<%=purchaseVO.getTranNo() %>&tranCode=2">수령 완료</a>
+			<%}else {%>
+				배송 완료
+			<%} %>
 			
 		</td>
 	</tr>

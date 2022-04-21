@@ -20,17 +20,43 @@ public class UpdateTranCodeAction extends Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-			
+
+		SearchVO searchVO = new SearchVO();
+
+		int page = 1;
+		if (request.getParameter("page") != null)
+			page = Integer.parseInt(request.getParameter("page"));
+
+		searchVO.setPage(page);
+		searchVO.setSearchCondition(request.getParameter("searchCondition"));
+		searchVO.setSearchKeyword(request.getParameter("searchKeyword"));
+
+		String pageUnit = getServletContext().getInitParameter("pageSize");
+		searchVO.setPageUnit(Integer.parseInt(pageUnit));
+
+		////////////
 		int tranNo = Integer.parseInt(request.getParameter("tranNo"));
-		
+
 		PurchaseVO purchaseVO = new PurchaseVO();
 		purchaseVO.setTranNo(tranNo);
+		purchaseVO.setTranCode(request.getParameter("tranCode"));
 		System.out.println("updateTranCode tran_no => " + tranNo);
-		
+		System.out.println("updateTranCode tran_no => " + purchaseVO.getTranCode());
+
 		PurchaseService service = new PurchaseServiceImpl();
 		service.updateTranCode(purchaseVO);
-
 		
+		HttpSession session = request.getSession();
+		UserVO user = (UserVO)session.getAttribute("user");
+		String buyer = user.getUserId();
+		
+		PurchaseService service2 = new PurchaseServiceImpl();
+		HashMap<String,Object> map = service2.getPurchaseList(searchVO, buyer);
+		
+		request.setAttribute("map", map);
+		request.setAttribute("searchVO", searchVO);
+		System.out.println("ListPurchaseAction.java map => " + map);
+
 		return "forward:/purchase/listPurchase.jsp";
 	}
 
