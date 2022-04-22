@@ -24,6 +24,7 @@ public class LoginAction extends Action{
 		
 		HttpSession session=request.getSession();
 		session.setAttribute("user", dbVO);
+		System.out.println(dbVO.getRole());
 		
 		return "redirect:/index.jsp";
 	}

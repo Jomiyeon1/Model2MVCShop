@@ -117,9 +117,11 @@
 		</td>
 		<td></td>
 		<td align="center">
-			<% if(purchaseVO.getTranCode().trim().equals("0")){ %>
+			<% if(purchaseVO.getTranCode().trim().equals("1")){ %>
 			<a href="/updateTranCode.do?tranNo=<%=purchaseVO.getTranNo() %>&tranCode=2">수령 완료</a>
-			<%}else {%>
+			<%}else if(purchaseVO.getTranCode().trim().equals("0")){%>
+				배송 준비 중
+			<%} else{%>
 				배송 완료
 			<%} %>
 			

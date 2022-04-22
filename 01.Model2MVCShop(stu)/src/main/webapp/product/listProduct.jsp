@@ -2,6 +2,7 @@
 
 <%@ page import="java.util.*"  %>
 <%@ page import="com.model2.mvc.service.product.vo.*" %>
+<%@ page import="com.model2.mvc.service.user.vo.*" %>
 <%@ page import="com.model2.mvc.common.*" %>
 
 
@@ -26,19 +27,10 @@
 		if(total%searchVO.getPageUnit() >0)
 			totalPage += 1;
 	}
+	
+	// 관리자 / 고객
+	UserVO user = (UserVO)session.getAttribute("user");
 %>
-
-
-
-
-<!DOCTYPE html>
-
-
-
-
-
-
-
 
 
 
@@ -207,7 +199,12 @@ function fncGetProductList(){
 		<td></td>
 		<td align="left">
 		
-			판매중
+			<!-- 배송중, 배송완료 -->
+			
+			판매 중
+			<%if( user.getRole().trim().equals("admin") ) {%>
+			<a href="/updateTranCodeByProd.do?prodNo=<%=vo.getProdNo() %>&tranCode=1">  / 배송하기</a>
+			<%} %>
 		
 		</td>	
 	</tr>
