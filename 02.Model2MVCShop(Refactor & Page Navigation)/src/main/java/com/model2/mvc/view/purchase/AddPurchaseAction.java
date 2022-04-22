@@ -6,13 +6,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.jasper.compiler.JspRuntimeContext;
 
 import com.model2.mvc.framework.Action;
+import com.model2.mvc.service.domain.Product;
+import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.product.ProductService;
 import com.model2.mvc.service.product.impl.ProductServiceImpl;
-import com.model2.mvc.service.product.vo.ProductVO;
+
 import com.model2.mvc.service.purchase.PurchaseService;
 import com.model2.mvc.service.purchase.impl.PurchaseServiceImpl;
-import com.model2.mvc.service.purchase.vo.PurchaseVO;
-import com.model2.mvc.service.user.vo.UserVO;
+import com.model2.mvc.service.purchase.Purchase;
+
 
 public class AddPurchaseAction extends Action {
 
@@ -20,31 +22,31 @@ public class AddPurchaseAction extends Action {
 		
 		
 		//int prodNo = Integer.parseInt(request.getParameter("prodNo"));
-		//System.out.println("AddpurchaseAction 시작, productVO  => "+prodNo);
+		//System.out.println("AddpurchaseAction 시작, product  => "+prodNo);
 		
-		ProductVO productVO = new ProductVO(); 	
-		productVO.setProdNo(Integer.parseInt(request.getParameter("prodNo")));
+		Product product = new Product(); 	
+		product.setProdNo(Integer.parseInt(request.getParameter("prodNo")));
 		
 		//String userId = request.getParameter("buyerId");
-		UserVO userVO = new UserVO();
-		userVO.setUserId(request.getParameter("buyerId"));
+		User user = new User();
+		user.setUserId(request.getParameter("buyerId"));
 		
-		PurchaseVO purchaseVO = new PurchaseVO();
-		purchaseVO.setBuyer(userVO);
-		purchaseVO.setPurchaseProd(productVO);
-		purchaseVO.setPaymentOption(request.getParameter("paymentOption"));
-		purchaseVO.setReceiverName(request.getParameter("receiverName"));
-		purchaseVO.setReceiverPhone(request.getParameter("receiverPhone"));
-		purchaseVO.setDivyAddr(request.getParameter("receiverAddr"));
-		purchaseVO.setDivyRequest(request.getParameter("receiverRequest"));
-		purchaseVO.setDivyDate(request.getParameter("receiverDate"));
+		Purchase purchase = new Purchase();
+		purchase.setBuyer(user);
+		purchase.setPurchaseProd(product);
+		purchase.setPaymentOption(request.getParameter("paymentOption"));
+		purchase.setReceiverName(request.getParameter("receiverName"));
+		purchase.setReceiverPhone(request.getParameter("receiverPhone"));
+		purchase.setDivyAddr(request.getParameter("receiverAddr"));
+		purchase.setDivyRequest(request.getParameter("receiverRequest"));
+		purchase.setDivyDate(request.getParameter("receiverDate"));
 		
 		PurchaseService service = new PurchaseServiceImpl();
-		service.addPurchase(purchaseVO);
+		service.addPurchase(purchase);
 		
-		System.out.println("AddpurchaseAction setting 후, purchaseVO " + purchaseVO);
+		System.out.println("AddpurchaseAction setting 후, purchase " + purchase);
 		
-		request.setAttribute("purchaseVO", purchaseVO);
+		request.setAttribute("purchase", purchase);
 
 		return "forward:/purchase/addPurchase.jsp";
 
