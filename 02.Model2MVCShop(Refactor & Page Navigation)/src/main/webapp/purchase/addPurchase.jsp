@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 
-<%@ page import="com.model2.mvc.service.purchase.vo.*" %>
+<%@ page import="com.model2.mvc.service.domain.Purchase" %>
 
 <% 
 
-	PurchaseVO vo = (PurchaseVO)request.getAttribute("purchaseVO"); 
+	Purchase vo = (Purchase)request.getAttribute("purchase"); 
 
-	System.out.println("addPurchase.jsp purchaseVO => " + vo);
+	System.out.println("addPurchase.jsp purchase => " + vo);
 
 %>
 
@@ -18,7 +18,7 @@
 
 <body>
 
-<form name="updatePurchase" action="/updatePurchaseView.do?tranNo=0" method="post">
+<form name="updatePurchase" action="/updatePurchaseView.do?tranNo=<%=vo.getTranNo() %>" method="post">
 
 다음과 같이 구매가 되었습니다.
 

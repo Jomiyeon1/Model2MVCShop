@@ -1,16 +1,16 @@
 package com.model2.mvc.view.purchase;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.model2.mvc.common.SearchVO;
+import com.model2.mvc.common.Search;
 import com.model2.mvc.framework.Action;
+import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.purchase.PurchaseService;
 import com.model2.mvc.service.purchase.impl.PurchaseServiceImpl;
-import com.model2.mvc.service.user.vo.UserVO;
 
 
 
@@ -19,34 +19,41 @@ public class ListPurchaseAction extends Action {
 	@Override
 	public String execute(	HttpServletRequest request,
 												HttpServletResponse response) throws Exception {
-		SearchVO searchVO=new SearchVO();
+		Search search =new Search();
 		
-		int page=1;
-		if(request.getParameter("page") != null)
-			page=Integer.parseInt(request.getParameter("page"));
+		int currentPage=1;
+		if(request.getParameter("currentPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
 		
-		searchVO.setPage(page);
-		searchVO.setSearchCondition(request.getParameter("searchCondition"));
-		searchVO.setSearchKeyword(request.getParameter("searchKeyword"));
+		System.out.println("ListPriductAction currentPage => "+currentPage);
+		search.setCurrentPage(currentPage);
+		search.setSearchCondition(request.getParameter("searchCondition"));
+		search.setSearchKeyword(request.getParameter("searchKeyword"));
 		
-		String pageUnit=getServletContext().getInitParameter("pageSize");
-		searchVO.setPageUnit(Integer.parseInt(pageUnit));
+		
+		// web.xml  meta-data 로 부터 상수 추출 
+		//한 페이지당 보여지는 게시물수
+		int pageSize = Integer.parseInt( getServletContext().getInitParameter("pageSize"));
+		// 하단 페이지 번호 화면에 보여지는 수
+		int pageUnit  =  Integer.parseInt(getServletContext().getInitParameter("pageUnit"));
+		search.setPageSize(pageSize);
 		
 		HttpSession session = request.getSession();
-		UserVO user = (UserVO)session.getAttribute("user");
+		User user = (User)session.getAttribute("user");
 		System.out.println("addPurchase.jsp UserVO => "+ user);
-		//정상출력 ok
+		
 
 		
 		String buyer = user.getUserId();
 		System.out.println("ListPurchaseAction buyerId : " + buyer);
-		//정상출력 ok
+		
 		
 		PurchaseService service=new PurchaseServiceImpl();
-		HashMap<String,Object> map = service.getPurchaseList(searchVO, buyer);
+		Map<String,Object> map = service.getPurchaseList(search, buyer);
 
 		request.setAttribute("map", map);
-		request.setAttribute("searchVO", searchVO);
+		request.setAttribute("search", search);
 		System.out.println("ListPurchaseAction.java map => " + map);
 		
 		return "forward:/purchase/listPurchase.jsp";

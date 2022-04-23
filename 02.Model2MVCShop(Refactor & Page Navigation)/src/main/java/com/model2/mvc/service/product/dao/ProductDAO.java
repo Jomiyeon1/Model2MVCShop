@@ -152,7 +152,7 @@ public class ProductDAO {
 				+ "WHERE row_seq BETWEEN " + ((search.getCurrentPage() - 1) * search.getPageSize() + 1) + " AND "
 				+ search.getCurrentPage() * search.getPageSize();
 
-		System.out.println("UserDAO :: make SQL :: " + sql);
+		System.out.println("ProductDAO :: make SQL :: " + sql);
 
 		return sql;
 	}

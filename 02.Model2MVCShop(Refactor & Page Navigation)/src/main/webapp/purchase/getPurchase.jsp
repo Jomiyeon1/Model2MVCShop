@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 
-<%@ page import="com.model2.mvc.service.purchase.vo.*" %>
+<%@ page import="com.model2.mvc.service.domain.*" %>
 
 <%
 	
-	PurchaseVO vo = (PurchaseVO)request.getAttribute("vo");
+	Purchase vo = (Purchase)request.getAttribute("vo");
 	System.out.println("getPurchase.jsp vo=> " + vo);
 %>
 

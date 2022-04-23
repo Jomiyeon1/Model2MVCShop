@@ -7,13 +7,14 @@ import org.apache.jasper.compiler.JspRuntimeContext;
 
 import com.model2.mvc.framework.Action;
 import com.model2.mvc.service.domain.Product;
+import com.model2.mvc.service.domain.Purchase;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.product.ProductService;
 import com.model2.mvc.service.product.impl.ProductServiceImpl;
 
 import com.model2.mvc.service.purchase.PurchaseService;
 import com.model2.mvc.service.purchase.impl.PurchaseServiceImpl;
-import com.model2.mvc.service.purchase.Purchase;
+
 
 
 public class AddPurchaseAction extends Action {
@@ -30,6 +31,7 @@ public class AddPurchaseAction extends Action {
 		//String userId = request.getParameter("buyerId");
 		User user = new User();
 		user.setUserId(request.getParameter("buyerId"));
+		System.out.println("AddPurchaseAction User" + user.getUserId());
 		
 		Purchase purchase = new Purchase();
 		purchase.setBuyer(user);

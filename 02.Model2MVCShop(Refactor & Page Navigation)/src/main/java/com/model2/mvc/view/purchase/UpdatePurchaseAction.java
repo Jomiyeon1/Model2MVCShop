@@ -4,10 +4,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.model2.mvc.framework.Action;
+import com.model2.mvc.service.domain.Purchase;
+import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.purchase.PurchaseService;
 import com.model2.mvc.service.purchase.impl.PurchaseServiceImpl;
-import com.model2.mvc.service.purchase.vo.PurchaseVO;
-import com.model2.mvc.service.user.vo.UserVO;
+
 
 public class UpdatePurchaseAction extends Action {
 
@@ -20,24 +21,24 @@ public class UpdatePurchaseAction extends Action {
 		int tranNo = Integer.parseInt(request.getParameter("tranNo"));
 		
 		//buyer
-		UserVO userVO = new UserVO();
-		userVO.setUserId(request.getParameter("buyerId"));
+		User user = new User();
+		user.setUserId(request.getParameter("buyerId"));
 		
-		PurchaseVO purchaseVO = new PurchaseVO();
-		purchaseVO.setTranNo(tranNo);
-		purchaseVO.setBuyer(userVO);
-		purchaseVO.setPaymentOption(request.getParameter("paymentOption"));
-		purchaseVO.setReceiverName(request.getParameter("receiverName"));
-		purchaseVO.setReceiverPhone(request.getParameter("receiverPhone"));
-		purchaseVO.setDivyAddr(request.getParameter("receiverAddr"));
-		purchaseVO.setDivyRequest(request.getParameter("receiverRequest"));
-		purchaseVO.setDivyDate(request.getParameter("divyDate"));
+		Purchase purchase = new Purchase();
+		purchase.setTranNo(tranNo);
+		purchase.setBuyer(user);
+		purchase.setPaymentOption(request.getParameter("paymentOption"));
+		purchase.setReceiverName(request.getParameter("receiverName"));
+		purchase.setReceiverPhone(request.getParameter("receiverPhone"));
+		purchase.setDivyAddr(request.getParameter("receiverAddr"));
+		purchase.setDivyRequest(request.getParameter("receiverRequest"));
+		purchase.setDivyDate(request.getParameter("divyDate"));
 		
 		
 		PurchaseService service = new PurchaseServiceImpl();
-		service.updatePurchase(purchaseVO);
+		service.updatePurchase(purchase);
 		
-		System.out.println("updatePurchaseAction.java 수정 후 purchaseVO => " + purchaseVO);
+		System.out.println("updatePurchaseAction.java 수정 후 purchase => " + purchase);
 		
 		
 		
