@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"%>
 
-<%@ page import="com.model2.mvc.service.domain.*" %> 
+<%@ page import="com.model2.mvc.service.domain.Product" %> 
+<%@ page import="com.model2.mvc.service.domain.User" %> 
     
 <%
 	Product vo = (Product)request.getAttribute("vo");
 	System.out.println("addPurchase.jsp productVO => "+ vo);
 	
-	User user = (User)request.getAttribute("user");
+	session = request.getSession();
+	User user = (User)session.getAttribute("user");
 	System.out.println("addPurchaseView.jsp User => "+ user);
 	
 %>

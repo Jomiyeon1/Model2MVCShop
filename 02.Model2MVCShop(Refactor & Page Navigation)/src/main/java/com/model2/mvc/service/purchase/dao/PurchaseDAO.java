@@ -104,11 +104,10 @@ public class PurchaseDAO {
 		Connection con = DBUtil.getConnection();
 
 		String sql = "select\n"
-				+ "t.prod_no, t.tran_no, u.user_id, t.RECEIVER_NAME, t.receiver_phone, t.TRAN_STATUS_CODE\n"
-				+ "from users u, transaction t, product p\n" 
-				+ "where u.user_id = t.buyer_id\n"
-				+ "AND p.prod_no = t.prod_no\n" + "AND t.buyer_id = ?\n" 
-				+ "ORDER BY TRAN_NO DESC"; // 쿼리 ok
+				+ "prod_no, tran_no, buyer_id, receiver_name, receiver_phone, tran_status_code \n"
+				+ "from transaction \n" 
+				+ "where buyer_id = ? \n"
+				+ "ORDER BY tran_no DESC"; // 쿼리 ok
 //		if (search.getSearchCondition() != null) {
 //			if (search.getSearchCondition().equals("0")) {
 //				sql += " where PROD_NO='" + search.getSearchKeyword()
@@ -119,6 +118,12 @@ public class PurchaseDAO {
 //			}
 //		}
 //		sql += " order by PROD_NO";
+		
+		PreparedStatement pStmt = con.prepareStatement(sql);
+		pStmt.setString(1, buyer);
+		//System.out.println("listPurchase buyer => " + buyer);
+		ResultSet rs = pStmt.executeQuery();
+		
 		System.out.println("PurchaseDAO::Original SQL :: " + sql);
 
 		// ==> TotalCount GET
@@ -127,11 +132,7 @@ public class PurchaseDAO {
 
 		// ==> CurrentPage 게시물만 받도록 Query 다시구성
 		sql = makeCurrentPageSql(sql, search);
-		PreparedStatement pStmt = con.prepareStatement(sql);
-		pStmt.setString(1, buyer);
-		ResultSet rs = pStmt.executeQuery();
-
-
+		
 		ArrayList<Purchase> list = new ArrayList<Purchase>();
 		while (rs.next()) {
 		Purchase purchase = new Purchase();
@@ -139,7 +140,7 @@ public class PurchaseDAO {
 		Product product = new Product();
 
 		product.setProdNo(rs.getInt("prod_no"));
-		user.setUserId(rs.getString("user_id"));
+		user.setUserId(rs.getString("buyer_id"));
 
 		// 수정 중..
 
@@ -153,6 +154,7 @@ public class PurchaseDAO {
 		purchase.setTranCode(rs.getString("TRAN_STATUS_CODE"));
 
 		list.add(purchase);
+		
 
 	}
 
@@ -174,10 +176,12 @@ public class PurchaseDAO {
 	private int getTotalCount(String sql) throws Exception {
 
 		sql = "SELECT COUNT(*) " + "FROM ( " + sql + ") countTable";
-
+		
+		
 		Connection con = DBUtil.getConnection();
 		PreparedStatement pStmt = con.prepareStatement(sql);
 		ResultSet rs = pStmt.executeQuery();
+		
 
 		int totalCount = 0;
 		if (rs.next()) {

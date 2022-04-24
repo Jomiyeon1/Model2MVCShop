@@ -4,6 +4,7 @@
 
 <%
 	User user = (User)request.getAttribute("user");
+	System.out.println("getUser => "+ user);
 %>	
 
 <html>

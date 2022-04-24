@@ -31,8 +31,9 @@
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
 <script type="text/javascript">
-	function fncGetUserList() {
-		document.detailForm.submit();
+function fncGetPurchaseList(currentPage) {
+	document.getElementById("currentPage").value = currentPage;
+   	document.detailForm.submit();		
 	}
 </script>
 </head>
@@ -135,17 +136,17 @@
 			<% if( resultPage.getCurrentPage() <= resultPage.getPageUnit() ){ %>
 					◀ 이전
 			<% }else{ %>
-					<a href="javascript:fncGetProductList('<%=resultPage.getCurrentPage()-1%>')">◀ 이전</a>
+					<a href="javascript:fncGetPurchaseList('<%=resultPage.getCurrentPage()-1%>')">◀ 이전</a>
 			<% } %>
 
 			<%	for(int i=resultPage.getBeginUnitPage();i<= resultPage.getEndUnitPage() ;i++){	%>
-					<a href="javascript:fncGetProductList('<%=i %>');"><%=i %></a>
+					<a href="javascript:fncGetPurchaseList('<%=i %>');"><%=i %></a>
 			<% 	}  %>
 	
 			<% if( resultPage.getEndUnitPage() >= resultPage.getMaxPage() ){ %>
 					이후 ▶
 			<% }else{ %>
-					<a href="javascript:fncGetProductList('<%=resultPage.getEndUnitPage()+1%>')">이후 ▶</a>
+					<a href="javascript:fncGetPurchaseList('<%=resultPage.getEndUnitPage()+1%>')">이후 ▶</a>
 			<% } %>
 		</td>
 	</tr>

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
 import com.model2.mvc.framework.Action;
 import com.model2.mvc.service.domain.User;
@@ -51,8 +52,13 @@ public class ListPurchaseAction extends Action {
 		
 		PurchaseService service=new PurchaseServiceImpl();
 		Map<String,Object> map = service.getPurchaseList(search, buyer);
+		
+		Page resultPage	= 
+				new Page( currentPage, ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
+		
 
-		request.setAttribute("map", map);
+		request.setAttribute("list", map.get("list"));
+		request.setAttribute("resultPage", resultPage);
 		request.setAttribute("search", search);
 		System.out.println("ListPurchaseAction.java map => " + map);
 		
